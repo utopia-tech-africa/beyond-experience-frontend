@@ -1,4 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* Global h1 styling per design */
+h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 100%;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.page-vid-overlay {
+  position: absolute;
+}
+
+
+
+
+.profile-vid video {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(0deg);
+
+}
+
+
