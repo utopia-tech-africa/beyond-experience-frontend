@@ -3,7 +3,7 @@
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import VideoOverlay from "../components/VideoOverlay";
+import Vector from "../components/Vector";
 
 
 export default function LoginPage() {
@@ -13,25 +13,18 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
       {/* Mobile frame */}
       <div className="w-full max-w-sm px-6 pt-6">
-        {/* ====== Fake iOS Status Bar ====== */}
-        {/* <div className="flex justify-between items-center text-xs opacity-80 mb-6">
-          <span>9:41</span>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-2 border border-white rounded-sm relative">
-              <div className="absolute right-0 top-0 bottom-0 w-2 bg-yellow-400 rounded-sm" />
-            </div>
-          </div>
-        </div> */}
+        
 
         {/* Back arrow + logo */}
-        <div className="flex items-center gap-10 justify-between mb-10">
-          <Link href="/account">
-            <ArrowLeft size={25} className="cursor-pointer" />
-          </Link>
-          {/* <div> <VideoOverlay/> </div> */}
-          {/* <div className="text-lg font-bold tracking-widest">⚡</div> */}
-          <div /> {/* spacer */}
-          <VideoOverlay/> 
+         <div className="flex items-center gap-10 justify-center mb-10 relative">
+          <div className="absolute left-0">
+            <Link href="/">
+              <ArrowLeft size={30} className="cursor-pointer" />
+            </Link>
+          </div>
+         <div> <Vector/>  </div>
+
+         
         </div>
 
         {/* Title */}
@@ -69,7 +62,7 @@ export default function LoginPage() {
 
         {/* Forgot password */}
         <div className="flex justify-end mb-8">
-          <Link href="#" className="text-sm text-gray-400">
+          <Link href="#" className="text-sm text-gray-400 mb-5">
             Forgot password
           </Link>
         </div>
@@ -90,7 +83,7 @@ export default function LoginPage() {
         </div>
 
         {/* Social login buttons */}
-        <div className="space-y-3">
+        <div className="space-y-3 mb-6">
           <a
             href="/api/auth/apple"
             role="button"
@@ -107,8 +100,8 @@ export default function LoginPage() {
             aria-label="Login with Google"
             className="w-full block bg-gray-800 rounded-full py-3 flex items-center justify-center gap-3 hover:bg-gray-700 transition"
           >
-            <img src="/google.svg" alt="google" className="w-5 h-5" />
-            <span>Login with Google</span>
+            <img src="/google.svg" alt="google" className="w-5 h-5 " />
+            <span >Login with Google</span>
           </a>
         </div>
       </div>

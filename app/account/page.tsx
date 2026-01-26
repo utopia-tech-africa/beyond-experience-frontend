@@ -4,8 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-// import VideoOverlay from "../components/VideoOverlay";
-
+import Vector from "../components/Vector";
 
 export default function CreateAccountPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,25 +14,17 @@ export default function CreateAccountPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
       {/* Mobile container */}
       <div className="w-full max-w-sm mt-20">
-        {/* ====== Fake iOS Status Bar ====== */}
-        {/* <div className="flex justify-between items-center text-xs opacity-80 mb-6">
-          <span>9:41</span>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-2 border border-white rounded-sm relative">
-              <div className="absolute right-0 top-0 bottom-0 w-2 bg-yellow-400 rounded-sm" />
-            </div>
-          </div>
-        </div>  */}
-
         {/* Back arrow + logo */}
-        <div className="flex items-center  gap-15 justify-between mb-10">
-          <Link href="/">
-            <ArrowLeft size={30} className="cursor-pointer" />
-          </Link>
-         
-
-          {/* <div className="text-lg font-bold tracking-widest">⚡</div> */}
-          {/* <div /> spacer */}
+        <div className="flex items-center gap-10 justify-center mb-10 relative">
+          <div className="absolute left-0">
+            <Link href="/">
+              <ArrowLeft size={30} className="cursor-pointer" />
+            </Link>
+          </div>
+          <div>
+            {" "}
+            <Vector />{" "}
+          </div>
         </div>
 
         {/* Title */}
@@ -129,8 +120,10 @@ export default function CreateAccountPage() {
 
         {/* Login link */}
         <p className="text-center text-sm text-gray-400 mt-8">
-          Already a member?{" "}
-          <span className="text-blue-500 cursor-pointer">Login here</span>
+          Already a member?
+          <Link href="/login" className="text-blue-500 hover:underline">
+            Login here
+          </Link>
         </p>
       </div>
     </div>

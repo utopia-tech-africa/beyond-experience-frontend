@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Camera } from "lucide-react";
 import { useRef } from "react";
 import VideoOverlay from "../components/VideoOverlay";
+import Vector from "../components/Vector";
 
 export default function ProfileSetupPage() {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -13,17 +14,16 @@ export default function ProfileSetupPage() {
       <div className="w-full max-w-sm px-6 pt-6">
         {/* ===== iOS Status Bar ===== */}
         <div className="flex justify-between items-center text-xs opacity-80 mb-6">
-          {/* <span>9:41</span> */}
-          {/* <div className="flex items-center gap-2">
-            <div className="w-4 h-2 border border-white rounded-sm relative">
-              <div className="absolute right-0 top-0 bottom-0 w-2 bg-yellow-400 rounded-sm" />
-            </div>
-          </div> */}
+        </div>
+
+        {/* Vector */}
+        <div className="flex justify-center mb-8">
+          <Vector />
         </div>
 
         {/* Title */}
 
-        <h1 className="text-l font-bold mb-8 tracking-wide">
+        <h1 className="text-center font-bold mb-8 tracking-wide">
           FINISH SETTING UP YOUR ACCOUNT
         </h1>
 
@@ -106,7 +106,7 @@ export default function ProfileSetupPage() {
           </div>
 
           {/* Continue button */}
-          <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4">
+          <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10">
             Continue
           </button>
         </div>

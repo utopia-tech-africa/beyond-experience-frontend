@@ -5,7 +5,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <h1>Hello World</h1> 
 
-       <Link href="/create-account" className="text-blue-500 underline hover:text-blue-800">
+       {/* <Link href="/account" className="text-blue-500 underline hover:text-blue-800">
         Go to Create Account
       </Link>
 
@@ -14,7 +14,7 @@ export default function Home() {
       </Link>
        <Link href="/profile-setup" className="text-blue-500 underline hover:text-blue-800">
         Go to Profile Page
-      </Link>
+      </Link> */}
 
     </div>
   );
