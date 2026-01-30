@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Bebas_Neue, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} bg-[linear-gradient(to_bottom,#0A253B,#000000,#000000)] antialiased`}
       >
-        {children}
+        <div className="h-screen  max-w-md mx-auto">{children}</div>
       </body>
     </html>
   );

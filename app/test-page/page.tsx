@@ -1,29 +1,14 @@
-import CustomInput from "@/components/custom-input";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import React from 'react'
+import SplashScreen from '../components/splashScreen'
+import SecondSplashScreen from '../components/secondSplashScreen'
 
-export default function Profile() {
+const page = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <div className="space-y-2.5">
-    
-        <CustomInput label="Name"/>
-        <CustomInput label="Email"/>
-        <CustomInput label="Username"/>
-        <CustomInput label="Name"/>
-        <CustomInput label="Name"/>
-        <CustomInput label="Name"/>
-     
-      
-      </div>
-     
+    <div className='flex flex-col items-center justify-center h-full'>
+        <SplashScreen/>
+        <SecondSplashScreen/>
     </div>
-  );
+  )
 }
+
+export default page
