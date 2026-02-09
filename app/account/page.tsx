@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Vector from "../components/Vector";
 
 export default function CreateAccountPage() {
@@ -14,6 +15,7 @@ export default function CreateAccountPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
       {/* Mobile container */}
       <div className="w-full max-w-sm mt-20">
+        
         {/* Back arrow + logo */}
         <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
@@ -21,9 +23,8 @@ export default function CreateAccountPage() {
               <ArrowLeft size={30} className="cursor-pointer" />
             </Link>
           </div>
-          <div>
-            {" "}
-            <Vector />{" "}
+          <div> 
+            <Vector />
           </div>
         </div>
 
@@ -103,7 +104,7 @@ export default function CreateAccountPage() {
             aria-label="Sign up with Apple"
             className="w-full block bg-gray-800 rounded-3xl py-3 flex items-center justify-center gap-3 hover:bg-gray-700 transition"
           >
-            <img src="/apple.svg" alt="apple" className="w-5 h-5" />
+            <Image src="/apple.svg" alt="apple" width={20} height={20} />
             <span>Sign up with Apple</span>
           </a>
 
@@ -113,7 +114,7 @@ export default function CreateAccountPage() {
             aria-label="Sign up with Google"
             className="w-full block bg-gray-800 rounded-3xl py-3 flex items-center justify-center gap-3 hover:bg-gray-700 transition"
           >
-            <img src="/google.svg" alt="google" className="w-5 h-5" />
+            <Image src="/google.svg" alt="google" width={20} height={20} />
             <span>Sign up with Google</span>
           </a>
         </div>
