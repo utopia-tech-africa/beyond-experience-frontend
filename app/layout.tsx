@@ -33,7 +33,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} bg-[linear-gradient(to_bottom,#0A253B,#000000,#000000)] antialiased`}
       >
-        <div className="h-screen  max-w-md mx-auto">{children}</div>
+        <div className="h-screen  max-w-md mx-auto px-5 sm:px-0">
+          {children}
+        </div>
       </body>
     </html>
   );

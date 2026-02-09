@@ -1,14 +1,17 @@
-import React from 'react'
-import SplashScreen from '../components/splashScreen'
-import SecondSplashScreen from '../components/secondSplashScreen'
+"use client";
 
-const page = () => {
+import ChangePassword from "../components/changePassword";
+import ForgotPassword from "../components/forgotPassword";
+
+
+const Page = () => {
+
   return (
-    <div className='flex flex-col items-center justify-center h-full'>
-        <SplashScreen/>
-        <SecondSplashScreen/>
+    <div className="space-y-6 flex flex-col h-full font-bold">
+      {/* <ChangePassword /> */}
+      <ForgotPassword/>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
