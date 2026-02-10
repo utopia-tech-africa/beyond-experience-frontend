@@ -1,6 +1,6 @@
 "use client";
 import TopBar from "../components/top-bar";
-import ImagePicker from "../components/imagePicker";
+import ImagePicker from "../components/image-picker";
 import CustomInput from "@/components/ui/custom-input";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
