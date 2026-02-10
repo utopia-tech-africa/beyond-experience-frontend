@@ -23,7 +23,7 @@ export default function Page() {
   console.log(form.formState.errors);
 
   return (
-    <div className="space-y-6 flex flex-col h-full">
+    <div className="space-y-6 flex flex-col h-screen">
       <TopBar title="PROFILE" />
       <ImagePicker />
       <form
@@ -62,6 +62,7 @@ export default function Page() {
               { label: "Male", value: "male" },
               { label: "Female", value: "female" },
             ]}
+            errorMessage={form.formState.errors["gender"]?.message}
           />
           <div className="space-y-2">
             <label className="text-white">Phone Number</label>
@@ -82,12 +83,15 @@ export default function Page() {
               countrySelectProps={{
                 className: "bg-[#0A253B]",
               }}
+              errorMessage={
+                form.formState.errors["phoneNumber"]?.message as string
+              }
             />
           </div>
         </div>
       </form>
       <button
-        className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5"
+        className="text-white bg-[#0E2B77] w-full cursor-po rounded-full py-3 mt-auto mb-11.5"
         form="profile-form"
       >
         Save
