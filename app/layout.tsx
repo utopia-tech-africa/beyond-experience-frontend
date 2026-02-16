@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Bebas_Neue, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
-
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -31,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} bg-[linear-gradient(to_bottom,#0A253B,#000000,#000000)] antialiased`}
+        className={`${geistSans.variable} bg-[linear-gradient(to_bottom,#0A253B,#000000,#000000)] antialiased`}
       >
-        <div className="h-screen  max-w-md mx-auto px-5 sm:px-0">
+        <div className="app-content relative h-screen max-w-md mx-auto">
           {children}
         </div>
       </body>
