@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import Vector from "../components/Vector";
-
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +13,6 @@ export default function LoginPage() {
       {/* Mobile frame */}
       <div className="w-full max-w-sm px-6 pt-6">
         
-
         {/* Back arrow + logo */}
          <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
@@ -22,9 +20,8 @@ export default function LoginPage() {
               <ArrowLeft size={30} className="cursor-pointer" />
             </Link>
           </div>
-         <div> <Vector/>  </div>
-
-         
+         <div> 
+          <Vector/>  </div>
         </div>
 
         {/* Title */}
@@ -62,7 +59,7 @@ export default function LoginPage() {
 
         {/* Forgot password */}
         <div className="flex justify-end mb-8">
-          <Link href="#" className="text-sm text-gray-400 mb-5">
+          <Link href="/forgotPassword" className="text-sm text-gray-400 mb-5">
             Forgot password
           </Link>
         </div>
