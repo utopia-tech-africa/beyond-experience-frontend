@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} bg-[linear-gradient(to_bottom,#0A253B,#000000,#000000)] antialiased`}
       >
-        <div className="app-content relative h-screen max-w-md mx-auto">
+        <div className="h-screen  max-w-md mx-auto px-5 sm:px-0">
           {children}
         </div>
       </body>

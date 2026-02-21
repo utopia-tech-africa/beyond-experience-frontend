@@ -1,5 +1,6 @@
 "use client";
 
+
 export default function Home() {
   return (
     <div className="max-w-md h-full  flex flex-col items-center  gap-15 px-6">
