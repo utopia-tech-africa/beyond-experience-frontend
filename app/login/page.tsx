@@ -3,7 +3,7 @@
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import Vector from "../components/Vector";
+import Vector from "../components/vector";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,16 +12,16 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
       {/* Mobile frame */}
       <div className="w-full max-w-sm px-6 pt-6">
-        
         {/* Back arrow + logo */}
-         <div className="flex items-center gap-10 justify-center mb-10 relative">
+        <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
             <Link href="/">
               <ArrowLeft size={30} className="cursor-pointer" />
             </Link>
           </div>
-         <div> 
-          <Vector/>  </div>
+          <div>
+            <Vector />{" "}
+          </div>
         </div>
 
         {/* Title */}
@@ -98,7 +98,7 @@ export default function LoginPage() {
             className="w-full block bg-gray-800 rounded-full py-3 flex items-center justify-center gap-3 hover:bg-gray-700 transition"
           >
             <img src="/google.svg" alt="google" className="w-5 h-5 " />
-            <span >Login with Google</span>
+            <span>Login with Google</span>
           </a>
         </div>
       </div>

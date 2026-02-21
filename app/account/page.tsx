@@ -5,17 +5,16 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Vector from "../components/Vector";
+import Vector from "../components/vector";
 
 export default function CreateAccountPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
+    <div className="min-h-screen text-white flex items-center justify-center px-6">
       {/* Mobile container */}
       <div className="w-full max-w-sm mt-20">
-        
         {/* Back arrow + logo */}
         <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
@@ -23,7 +22,7 @@ export default function CreateAccountPage() {
               <ArrowLeft size={30} className="cursor-pointer" />
             </Link>
           </div>
-          <div> 
+          <div>
             <Vector />
           </div>
         </div>

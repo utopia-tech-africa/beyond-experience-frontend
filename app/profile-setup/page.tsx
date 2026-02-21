@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { Camera } from "lucide-react";
 import { useRef } from "react";
-import VideoOverlay from "../components/VideoOverlay";
-import Vector from "../components/Vector";
+import VideoOverlay from "../components/video-overlay";
+import Vector from "../components/vector";
 
 export default function ProfileSetupPage() {
   const fileRef = useRef<HTMLInputElement>(null);
@@ -13,8 +13,7 @@ export default function ProfileSetupPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
       <div className="w-full max-w-sm px-6 pt-6">
         {/* ===== iOS Status Bar ===== */}
-        <div className="flex justify-between items-center text-xs opacity-80 mb-6">
-        </div>
+        <div className="flex justify-between items-center text-xs opacity-80 mb-6"></div>
 
         {/* Vector */}
         <div className="flex justify-center mb-8">

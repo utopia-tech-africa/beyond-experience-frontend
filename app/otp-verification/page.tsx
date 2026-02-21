@@ -36,7 +36,7 @@ export default function VerifyOtpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
+    <div className="min-h-screen  text-white flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         {/* Header */}
         <div className="flex items-center mb-10">
