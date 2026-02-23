@@ -1,56 +1,47 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react"
-import { useState } from "react"
+import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 export default function PhoneVerification() {
-  const [phone, setPhone] = useState("")
+  const [phone, setPhone] = useState("");
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0b1a2d] to-black flex items-center justify-center">
+    <div
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        background: "linear-gradient(to bottom, #0d2137 0%, #000000 60%)",
+      }}
+    >
       <div className="w-full max-w-sm px-6 text-white">
 
-        {/* Back button */}
-        <button className="mb-6">
-          <ArrowLeft className="w-5 h-5 text-gray-300" />
-        </button>
-
-        {/* Avatar */}
-        <div className="flex justify-center mb-6">
-         
+        
+        <div className="flex items-center mb-10">
+          <button>
+            <ArrowLeft className="w-5 h-5 text-gray-300" />
+          </button>
+          
         </div>
-
-        {/* Title */}
-        <h1 className="text-center text-xl font-semibold mb-8">
-          VERIFY YOUR NUMBER
+        <h1 className="text-3xl font-extrabold uppercase mb-8 tracking-tight">
+          Verify Your Number
         </h1>
-
-        {/* Phone input */}
-        <label className="block text-sm text-gray-400 mb-2">
-          Phone:
-        </label>
-
-        <div className="flex items-center gap-2 bg-[#0f223a] rounded-full px-4 py-3 mb-6 border border-gray-700">
-          <span className="text-lg">🇬🇭</span>
-          <span className="text-gray-300 text-sm">+233</span>
-
-          <input
-            type="tel"
+        <div className="space-y-2 mb-4">
+          <label className="text-white font-medium">Phone:</label>
+          <PhoneInput
+            defaultCountry="GH"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Enter phone number"
-            className="flex-1 bg-transparent outline-none text-white placeholder-gray-500 text-sm"
+            onChange={(val) => setPhone(val as string)}
+           
+            className="flex items-center rounded-full border border-gray-500 px-4 py-3 bg-transparent"
+            numberInputClass="bg-transparent text-white outline-none flex-1 ml-2"
           />
         </div>
-
-        {/* Send code button */}
-        <button
-          className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-full py-3 font-semibold"
-        >
+        <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold text-white mt-2">
           Send code
         </button>
-
       </div>
     </div>
-  )
+  );
 }

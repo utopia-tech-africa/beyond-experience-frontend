@@ -22,7 +22,7 @@ export default function VerifyOtpPage() {
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
-    index: number
+    index: number,
   ) => {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputsRef.current[index - 1]?.focus();
@@ -36,14 +36,13 @@ export default function VerifyOtpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
+    <div className="min-h-screen  text-white flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
         {/* Header */}
         <div className="flex items-center mb-10">
           <Link href="/" className="mr-4">
             <ArrowLeft size={26} />
           </Link>
-         
         </div>
 
         {/* Title */}
@@ -51,8 +50,7 @@ export default function VerifyOtpPage() {
           ENTER THE CODE
         </h1>
         <p className="text-gray-400 text-sm mb-8">
-          We sent a code to{" "}
-          <span className="text-white">+233 50 433 4535</span>
+          We sent a code to <span className="text-white">+233 50 433 4535</span>
         </p>
 
         {/* OTP Inputs */}

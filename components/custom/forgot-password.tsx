@@ -5,7 +5,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import TopBar from "../components/top-bar";
+import TopBar from "./top-bar";
 
 const ForgotPassword = () => {
   return (

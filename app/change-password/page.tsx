@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import TopBar from "../components/top-bar";
+import TopBar from "@/components/custom/top-bar";
 import CustomInput from "@/components/ui/custom-input";
 
 export default function Page() {
@@ -18,4 +18,3 @@ export default function Page() {
     </div>
   );
 }
- 

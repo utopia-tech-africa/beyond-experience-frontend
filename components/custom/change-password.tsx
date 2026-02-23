@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import TopBar from "../components/top-bar";
+import TopBar from "./top-bar";
 import CustomInput from "@/components/ui/custom-input";
 
 export default function ChangePassword() {
@@ -17,4 +17,3 @@ export default function ChangePassword() {
     </div>
   );
 }
- 

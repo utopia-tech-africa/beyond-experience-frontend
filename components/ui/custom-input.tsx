@@ -19,16 +19,16 @@ export default function CustomInput({
 
   return (
     <div className="space-y-2 relative">
-      {label && <Label className="text-white">{label}</Label>}
+      {label && <Label className="text-white font-semibold">{label}</Label>}
 
       <div className="relative w-full">
         <div className="space-y-2">
-          <Input
-            className="rounded-full border-[#4C5C6B]"
-            placeholder={placeholder}
-            type={inputType}
-            {...props}
-          />
+<Input
+  className="rounded-full border-[#4C5C6B] h-12 px-5"
+  placeholder={placeholder}
+  type={inputType}
+  {...props}
+/>
           <p className={`${errorMessage && "text-red-500 text-xs"}`}>
             {errorMessage}
           </p>
