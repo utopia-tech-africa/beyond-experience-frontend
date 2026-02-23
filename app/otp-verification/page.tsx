@@ -3,10 +3,12 @@
 import { useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function VerifyOtpPage() {
   const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
   const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
+  const router = useRouter();
 
   const handleChange = (value: string, index: number) => {
     if (!/^\d?$/.test(value)) return;
@@ -33,6 +35,7 @@ export default function VerifyOtpPage() {
     const code = otp.join("");
     console.log("OTP:", code);
     // verify OTP logic here
+    router.push("/profile-setup");
   };
 
   return (

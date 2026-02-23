@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react"
 import { useState } from "react"
 
@@ -44,11 +45,12 @@ export default function PhoneVerification() {
         </div>
 
         {/* Send code button */}
-        <button
-          className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-full py-3 font-semibold"
+        <Link
+          href="/otp-verification"
+          className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-full py-3 font-semibold inline-block text-center"
         >
           Send code
-        </button>
+        </Link>
 
       </div>
     </div>
