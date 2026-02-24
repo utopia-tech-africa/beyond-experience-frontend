@@ -1,5 +1,5 @@
 "use client";
-import { FadersHorizontalIcon } from "@phosphor-icons/react";
+import { FadersHorizontalIcon, MapPinIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import React from "react";
 
@@ -34,7 +34,7 @@ const MarketplaceCard = ({
           {description}
         </p>
         <div className="flex items-center gap-1 text-sm text-[#CAD2D9] ">
-          <FadersHorizontalIcon size={16} />
+          <MapPinIcon size={16} />
           <span>{location}</span>
         </div>
       </div>
