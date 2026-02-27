@@ -51,7 +51,7 @@ const Page = () => {
   return (
     <div className="h-full space-y-5 py-2">
       <NavBar title="DWAM" />
-      <SearchBar />
+      <SearchBar className="mx-4" />
       <ScrollArea className="h-[calc(100vh-180px)] rounded-md border p-4">
         <div className="space-y-3">
           {LISTINGS.map((item) => (

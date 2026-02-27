@@ -1,5 +1,7 @@
 "use client";
 
+import ChangePassword from "@/components/custom/change-password";
+import ForgotPassword from "@/components/custom/forgot-password-otp";
 import SplashScreen from "@/components/custom/splash-screen";
 
 const Page = () => {
@@ -7,7 +9,9 @@ const Page = () => {
     <div className="space-y-6 flex flex-col h-full font-bold">
       {/* <ChangePassword /> */}
       {/* <SecondSplashScreen/> */}
-      <SplashScreen />
+      {/* <SplashScreen /> */}
+      {/* <ForgotPassword/> */}
+      <ChangePassword/>
     </div>
   );
 };

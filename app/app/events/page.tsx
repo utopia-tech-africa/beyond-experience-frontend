@@ -3,7 +3,7 @@ import EventCard from "@/components/custom/event-card";
 import NavBar from "@/components/custom/nav-bar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CalendarDays } from "lucide-react";
-import React from "react";
+
 
 const EVENTS = [
   {
@@ -54,7 +54,7 @@ const Page = () => {
   return (
     <div className="flex flex-col h-screen space-y-5 py-2">
       {/* Fixed top */}
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <NavBar
           title="UPCOMING EVENTS"
           component={<CalendarDays className="text-white" size={24} />}

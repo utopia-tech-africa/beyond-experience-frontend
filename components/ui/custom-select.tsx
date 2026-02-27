@@ -16,6 +16,7 @@ type CustomSelectProps = {
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
+  errorMessage?: string;
 };
 
 export default function CustomSelect({

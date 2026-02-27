@@ -32,7 +32,7 @@ const ForgotPassword = () => {
           />
         </InputOTPGroup>
       </InputOTP>
-
+<p className="text-[#417FB3] flex justify-end">Resend code</p>
       <button className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5">
         Veirfy OTP
       </button>

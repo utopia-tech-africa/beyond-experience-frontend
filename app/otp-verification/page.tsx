@@ -1,88 +1,72 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 export default function VerifyOtpPage() {
-  const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
-  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
-
-  const handleChange = (value: string, index: number) => {
-    if (!/^\d?$/.test(value)) return;
-
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    if (value && index < inputsRef.current.length - 1) {
-      inputsRef.current[index + 1]?.focus();
-    }
-  };
-
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number,
-  ) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputsRef.current[index - 1]?.focus();
-    }
-  };
+  const [otp, setOtp] = useState("");
 
   const handleVerify = () => {
-    const code = otp.join("");
-    console.log("OTP:", code);
-    // verify OTP logic here
+    console.log("OTP:", otp);
   };
 
   return (
-    <div className="min-h-screen  text-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#05080f] text-white flex items-center justify-center px-6">
       <div className="w-full max-w-sm">
-        {/* Header */}
         <div className="flex items-center mb-10">
           <Link href="/" className="mr-4">
             <ArrowLeft size={26} />
           </Link>
         </div>
 
-        {/* Title */}
-        <h1 className="text-2xl font-bold mb-2 tracking-wide">
-          ENTER THE CODE
+        <h1 className="text-2xl font-bold mb-2 tracking-wide uppercase">
+          Enter the code
         </h1>
-        <p className="text-gray-400 text-sm mb-8">
-          We sent a code to <span className="text-white">+233 50 433 4535</span>
+        <p className="text-gray-400 text-sm mb-6">
+          We sent a code to{" "}
+          <span className="text-white font-semibold">+233 50 433 4535</span>
         </p>
 
-        {/* OTP Inputs */}
-        <div className="flex justify-between mb-6">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              ref={(el) => {
-                inputsRef.current[index] = el;
-              }}
-              type="text"
-              inputMode="numeric"
-              maxLength={1}
-              value={digit}
-              onChange={(e) => handleChange(e.target.value, index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              className="w-14 h-14 text-center text-xl rounded-xl bg-transparent border border-gray-600 focus:border-blue-500 outline-none"
-            />
-          ))}
-        </div>
-
-        {/* Resend */}
-        <div className="text-right mb-8">
+        <InputOTP
+          maxLength={4}
+          value={otp}
+          onChange={setOtp}
+          containerClassName="w-full"
+        >
+          <InputOTPGroup className="w-full justify-between gap-3">
+            {[0, 1, 2, 3].map((index) => (
+              <InputOTPSlot
+                key={index}
+                index={index}
+                className="
+                  flex-1 h-16 text-xl font-semibold rounded-xl
+                  bg-[#0d1117] border border-gray-700
+                  data-[active=true]:border-blue-500
+                  data-[active=true]:ring-2 data-[active=true]:ring-blue-500/30
+                  first:rounded-xl first:border
+                  last:rounded-xl last:border
+                  text-white
+                "
+              />
+            ))}
+          </InputOTPGroup>
+        </InputOTP>
+        <div className="text-right mt-3 mb-8">
           <button className="text-sm text-blue-500 hover:underline">
             Resend code
           </button>
         </div>
 
-        {/* Verify Button */}
         <button
           onClick={handleVerify}
-          className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-3xl py-3 font-semibold"
+          disabled={otp.length < 4}
+          className="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-3xl py-4 font-semibold text-base"
         >
           Verify OTP
         </button>

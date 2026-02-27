@@ -12,15 +12,26 @@ import { useForm } from "react-hook-form";
 const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters long"),
   username: z.string().min(2, "Username must be at least 2 characters long"),
-  email: z.email("Invalid email address"),
-  gender: z.enum(["male", "female"]),
-  phoneNumber: z.string(),
+  email: z.string().email("Enter a valid email address"),
+  gender: z.enum(["male", "female"], {
+    error: "Please select a gender",
+  }),
+  phoneNumber: z.string().min(7, "Enter a valid phone number"),
 });
+
+type ProfileFormValues = z.infer<typeof profileSchema>;
+
 export default function Page() {
-  const form = useForm({
+  const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileSchema),
+    defaultValues: {
+      name: "",
+      username: "",
+      email: "",
+      gender: undefined as unknown as "male" | "female",
+      phoneNumber: "",
+    },
   });
-  console.log(form.formState.errors);
 
   return (
     <div className="space-y-6 flex flex-col h-full">
@@ -37,31 +48,33 @@ export default function Page() {
             label="Name"
             placeholder="Maxwell Attoh"
             {...form.register("name")}
-            errorMessage={form.formState.errors["name"]?.message}
+            errorMessage={form.formState.errors.name?.message}
           />
           <CustomInput
             label="Username"
             placeholder="@max360"
             {...form.register("username")}
-            errorMessage={form.formState.errors["username"]?.message}
+            errorMessage={form.formState.errors.username?.message}
           />
           <CustomInput
             label="Email"
             placeholder="johndoe@email.com"
             {...form.register("email")}
-            errorMessage={form.formState.errors["email"]?.message}
+            errorMessage={form.formState.errors.email?.message}
           />
           <CustomSelect
             label="Gender"
             value={form.watch("gender")}
             onChange={(e) => {
-              console.log(e);
-              form.setValue("gender", e as "male" | "female");
+              form.setValue("gender", e as "male" | "female", {
+                shouldValidate: true,
+              });
             }}
             options={[
               { label: "Male", value: "male" },
               { label: "Female", value: "female" },
             ]}
+            errorMessage={form.formState.errors.gender?.message}
           />
           <div className="space-y-2">
             <label className="text-white">Phone Number</label>
@@ -69,7 +82,9 @@ export default function Page() {
               placeholder="Enter phone number"
               value={form.watch("phoneNumber")}
               onChange={(e) => {
-                form.setValue("phoneNumber", e as string);
+                form.setValue("phoneNumber", e as string, {
+                  shouldValidate: true,
+                });
               }}
               numberInputProps={{
                 className:
@@ -83,6 +98,11 @@ export default function Page() {
                 className: "bg-[#0A253B]",
               }}
             />
+            {form.formState.errors.phoneNumber && (
+              <p className="text-red-500 text-xs mt-1">
+                {form.formState.errors.phoneNumber.message}
+              </p>
+            )}
           </div>
         </div>
       </form>

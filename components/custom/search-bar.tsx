@@ -3,9 +3,9 @@
 import { Input } from "@/components/ui/input";
 import { Search, SlidersHorizontal } from "lucide-react";
 
-export function SearchBar() {
+export function SearchBar({className}: {className?: string}) {
   return (
-    <div className="flex items-center gap-3 w-full">
+    <div className={`flex items-center gap-3 w-full ${className}`}>
       {/* Search Input */}
       <div className="relative flex-1 text-[#4C4C54]">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 " />
