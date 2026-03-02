@@ -31,7 +31,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} bg-[linear-gradient(to_bottom,_#0A253B,_#000000,_#000000)] antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen max-w-md mx-auto">{children}</div>
+        {/* <div className="app-content relative">{children}</div> */}
+        <div className="h-screen  px-6 pt-6 max-w-md mx-auto">{children}</div>
       </body>
     </html>
   );

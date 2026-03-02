@@ -1,80 +1,101 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
+import TopBar from "@/components/custom/top-bar";
 import Link from "next/link";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// 1️⃣ Zod Schema
+const schema = z.object({
+  phoneNumber: z
+    .string()
+    .min(1, "Phone number is required")
+    .refine((value) => isValidPhoneNumber(value), {
+      message: "Enter a valid phone number",
+    }),
+});
+
+type FormValues = z.infer<typeof schema>;
 
 export default function ForgotPasswordPhonePage() {
-  const [phone, setPhone] = useState("");
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      phoneNumber: "",
+    },
+  });
 
-  const handleSubmit = () => {
-    console.log("Reset phone:", phone);
-    // send verification code logic here
+  const onSubmit = (data: FormValues) => {
+    console.log("Valid phone:", data.phoneNumber);
+    // send verification code logic
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex flex-col px-6">
-      <div className="w-full max-w-sm mx-auto pt-6 flex flex-col flex-1">
-        {/* Header */}
-        <div className="flex items-center mb-10">
-          <Link href="/forgotPassword" className="mr-4">
-            <ArrowLeft size={26} />
-          </Link>
-          
+    <div className="flex flex-col min-h-screen px-6 pt-6 text-white">
+      <TopBar title="FORGOT PASSWORD" />
+
+      <div className="mt-8 space-y-6 flex-1">
+        {/* Phone Field */}
+        <div className="space-y-2">
+          <label className="text-sm">Phone</label>
+
+          <PhoneInput
+            defaultCountry="GH"
+            international
+            countryCallingCodeEditable={false}
+            value={form.watch("phoneNumber")}
+            onChange={(value) =>
+              form.setValue("phoneNumber", value || "", {
+                shouldValidate: true,
+              })
+            }
+            numberInputProps={{
+                className:
+                  "w-full rounded-lg px-4 py-1.5 text-white outline-none bg-transparent",
+              }}
+              containerComponentProps={{
+                className:
+                  "rounded-full border-[#4C5C6B] border flex flex-row px-4",
+              }}
+              countrySelectProps={{
+                className: "bg-[#0A253B]",
+              }}
+            className={`w-full rounded-full border px-4 py-3 bg-transparent ${
+              form.formState.errors.phoneNumber
+                ? "border-red-500"
+                : "border-[#4C5C6B]"
+            }`}
+          />
+
+          {/* Error Message */}
+          {form.formState.errors.phoneNumber && (
+            <p className="text-red-500 text-sm">
+              {form.formState.errors.phoneNumber.message}
+            </p>
+          )}
         </div>
 
-        {/* Title */}
-        <h1 className="text-2xl font-bold tracking-wide mb-2">
-          FORGOT PASSWORD
-        </h1>
-        <p className="text-sm text-gray-400 mb-8">
-          Please enter your phone number to receive a verification code.
-        </p>
-
-        {/* Phone input */}
-        <div className="mb-4">
-          <label className="text-sm text-gray-300">Phone</label>
-
-          <div className="mt-2 flex items-center gap-3 bg-transparent border border-gray-600 rounded-3xl px-4 py-3 focus-within:border-blue-500">
-            {/* Ghana flag with dropdown */}
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🇬🇭</span>
-              <span className="text-gray-400">▼ </span>
-            </div>
-
-            <span className="text-white">+233</span>
-
-            <input
-              type="tel"
-              placeholder=""
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="flex-1 bg-transparent outline-none text-white placeholder-gray-500"
-            />
-          </div>
-        </div>
-
-        {/* Use email instead */}
-        <div className="text-center mb-10">
+        {/* Use Email */}
+        <div className="text-center">
           <Link
             href="/forgotPassword"
-            className="text-sm text-blue-500 hover:underline"
+            className="text-sm text-blue-400 hover:underline"
           >
             Use email rather?
           </Link>
         </div>
-
-        {/* Spacer to push button to bottom */}
-        <div className="flex-1"></div>
-
-        {/* Send button */}
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-3xl py-3 font-semibold mb-6"
-        >
-          Send
-        </button>
       </div>
+
+      {/* Submit Button */}
+      <button
+        onClick={form.handleSubmit(onSubmit)}
+        className="w-full bg-blue-700  transition rounded-3xl py-3 font-semibold mb-6"
+      >
+        Send
+      </button>
     </div>
   );
 }

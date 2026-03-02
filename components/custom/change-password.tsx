@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import TopBar from "@/components/custom/top-bar";
+import TopBar from "./top-bar";
 import CustomInput from "@/components/ui/custom-input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -8,12 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z
   .object({
-    oldPassword: z.string().min(1, "Old password is required"),
     newPassword: z
       .string()
       .min(8, "Must be at least 8 characters long")
-      .regex(/[0-9]/, "Must include special numbers")
-      .regex(/[^a-zA-Z0-9]/, "Must include special characters"),
+      .regex(/[0-9]/, "Must include a number")
+      .regex(/[^a-zA-Z0-9]/, "Must include a special character"),
     confirmNewPassword: z.string(),
   })
   .refine((data) => data.newPassword === data.confirmNewPassword, {
@@ -23,7 +22,7 @@ const schema = z
 
 type FormData = z.infer<typeof schema>;
 
-export default function Page() {
+export default function ChangePassword() {
   const {
     register,
     handleSubmit,
@@ -43,13 +42,6 @@ export default function Page() {
     >
       <TopBar title="CHANGE PASSWORD" />
       <div className="mt-6 space-y-4 text-white">
-        <CustomInput
-          type="password"
-          label="Old password"
-          placeholder="*********"
-          errorMessage={errors.oldPassword?.message}
-          {...register("oldPassword")}
-        />
         <CustomInput
           type="password"
           label="New password"

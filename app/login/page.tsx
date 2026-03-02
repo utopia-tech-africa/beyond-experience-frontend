@@ -3,25 +3,26 @@
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-import Vector from "../components/Vector";
+import Vector from "@/components/custom/vector";
+import CustomInput from "@/components/ui/custom-input";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
+    <div className="min-h-screen  text-white flex justify-center">
       {/* Mobile frame */}
       <div className="w-full max-w-sm px-6 pt-6">
-        
         {/* Back arrow + logo */}
-         <div className="flex items-center gap-10 justify-center mb-10 relative">
+        <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
             <Link href="/">
               <ArrowLeft size={30} className="cursor-pointer" />
             </Link>
           </div>
-         <div> 
-          <Vector/>  </div>
+          <div>
+            <Vector />{" "}
+          </div>
         </div>
 
         {/* Title */}
@@ -31,29 +32,23 @@ export default function LoginPage() {
 
         {/* Email */}
         <div className="mb-6">
-          <label className="text-sm text-gray-300">Email</label>
-          <input
-            type="email"
-            placeholder="johndoe@email.com"
-            className="mt-2 w-full bg-transparent border border-gray-600 rounded-full px-5 py-3 outline-none focus:border-white"
-          />
+          <CustomInput label="Email" placeholder="johndoe@email.com" />
         </div>
 
         {/* Password */}
         <div className="mb-2">
-          <label className="text-sm text-gray-300">Password</label>
           <div className="relative mt-2">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="********"
-              className="w-full bg-transparent border border-gray-600 rounded-full px-5 py-3 pr-16 outline-none focus:border-white"
+            <CustomInput
+              label="Password"
+              placeholder="*******"
+              type="password"
             />
-            <button
+            {/* <button
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-gray-300"
             >
               {showPassword ? "Hide" : "Show"}
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -98,7 +93,7 @@ export default function LoginPage() {
             className="w-full block bg-gray-800 rounded-full py-3 flex items-center justify-center gap-3 hover:bg-gray-700 transition"
           >
             <img src="/google.svg" alt="google" className="w-5 h-5 " />
-            <span >Login with Google</span>
+            <span>Login with Google</span>
           </a>
         </div>
       </div>

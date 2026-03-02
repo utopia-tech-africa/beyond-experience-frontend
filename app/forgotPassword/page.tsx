@@ -1,5 +1,7 @@
 "use client";
 
+import TopBar from "@/components/custom/top-bar";
+import CustomInput from "@/components/ui/custom-input";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,54 +15,37 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center px-6">
-      <div className="w-full max-w-sm pt-6 flex flex-col min-h-screen">
-        {/* Header */}
-        <div className="flex items-center mb-10">
-          <Link href="/login" className="mr-4">
-            <ArrowLeft size={26} />
-          </Link>
-          
-        </div>
+    <div className="space-y-6 flex flex-col h-full">
+      <TopBar title="FORGOT PASSWORD" />
+      <p className="text-white text-sm">
+        Please enter your email to receive a verification code
+      </p>
+      <CustomInput
+        label="Email"
+        placeholder="johndoe@email.com"
+        className="text-white"
+      />
 
-        {/* Title */}
-        <h1 className="text-2xl font-bold tracking-wide mb-2">
-          FORGOT PASSWORD
-        </h1>
-        <p className="text-sm text-gray-400 mb-8">
-          Please enter your email to receive a verification code.
-        </p>
-
-        {/* Email input */}
-        <div className="mb-4">
-          <label className="text-sm text-gray-300">Email</label>
-          <input
-            type="email"
-            placeholder="johndoe@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full bg-transparent border border-gray-600 rounded-3xl px-4 py-3 outline-none focus:border-blue-500"
-          />
-        </div>
-
-        {/* Use phone instead */}
-        <div className="text-center mb-10">
-          <Link href="/changePassword" className="text-sm text-blue-500 hover:underline">
-            Use phone rather?
-          </Link>
-        </div>
-
-        {/* Spacer to push button to bottom */}
-        <div className="flex-1"></div>
-
-        {/* Send button */}
-        <button
-          onClick={handleSubmit}
-          className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-3xl py-3 font-semibold mb-6"
+      {/* Use phone instead */}
+      <div className="text-center mb-10">
+        <Link
+          href="/changePassword"
+          className="text-sm text-blue-500 hover:underline"
         >
-          Send
-        </button>
+          Use phone rather?
+        </Link>
       </div>
+
+      {/* Spacer to push button to bottom */}
+      <div className="flex-1"></div>
+
+      {/* Send button */}
+      <button
+        onClick={handleSubmit}
+        className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-3xl py-3 text-white font-semibold mb-6"
+      >
+        Send
+      </button>
     </div>
   );
 }

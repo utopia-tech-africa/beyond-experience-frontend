@@ -5,7 +5,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import TopBar from "../components/top-bar";
+import TopBar from "@/components/custom/top-bar";
 
 const Page = () => {
   return (
@@ -32,7 +32,7 @@ const Page = () => {
           />
         </InputOTPGroup>
       </InputOTP>
-
+<p className="text-[#417FB3] flex justify-end">Resend code</p>
       <button className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5">
         Veirfy OTP
       </button>

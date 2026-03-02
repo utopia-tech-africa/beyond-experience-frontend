@@ -16,6 +16,7 @@ type CustomSelectProps = {
   value?: string;
   onChange?: (value: string) => void;
   placeholder?: string;
+  errorMessage?: string;
 };
 
 export default function CustomSelect({
@@ -30,7 +31,7 @@ export default function CustomSelect({
       {label && <Label>{label}</Label>}
 
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="rounded-full border-[#4C5C6B] w-full">
+        <SelectTrigger className="rounded-full border-[#4C5C6B] w-full !h-12 px-5">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
 
