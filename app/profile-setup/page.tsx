@@ -113,6 +113,6 @@ export default function ProfileSetupPage() {
             </div>
         </div>
       </div>
-    </div>
+ 
   );
 }
