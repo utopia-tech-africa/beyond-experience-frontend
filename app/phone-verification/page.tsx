@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import Link from "next/link";
+import { useState } from "react"
 
 export default function PhoneVerification() {
   const [phone, setPhone] = useState("");
@@ -38,9 +40,14 @@ export default function PhoneVerification() {
             numberInputClass="bg-transparent text-white outline-none flex-1 ml-2"
           />
         </div>
-        <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold text-white mt-2">
+        {/* Send code button */}
+        <Link
+          href="/otp-verification"
+          className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-full py-3 font-semibold inline-block text-center"
+        >
           Send code
-        </button>
+        </Link>
+
       </div>
     </div>
   );

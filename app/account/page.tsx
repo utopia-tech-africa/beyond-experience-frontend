@@ -8,8 +8,11 @@ import CustomInput from "@/components/ui/custom-input";
 
 export default function CreateAccountPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex items-center justify-center px-6">
-      <div className="w-full max-w-sm mt-20">
+    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
+      {/* Mobile container */}
+      <div className="w-full max-w-sm px-6 pt-6">
+        
+        {/* Back arrow + logo */}
         <div className="flex items-center gap-10 justify-center mb-10 relative">
           <div className="absolute left-0">
             <Link href="/">

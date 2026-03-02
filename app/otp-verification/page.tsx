@@ -9,11 +9,38 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
+
 export default function VerifyOtpPage() {
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
+  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
+  const router = useRouter();
+
+  const handleChange = (value: string, index: number) => {
+    if (!/^\d?$/.test(value)) return;
+
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+
+    if (value && index < inputsRef.current.length - 1) {
+      inputsRef.current[index + 1]?.focus();
+    }
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputsRef.current[index - 1]?.focus();
+    }
+  };
 
   const handleVerify = () => {
-    console.log("OTP:", otp);
+    const code = otp.join("");
+    console.log("OTP:", code);
+    // verify OTP logic here
+    router.push("/profile-setup");
   };
 
   return (
