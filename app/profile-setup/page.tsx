@@ -101,16 +101,18 @@ export default function ProfileSetupPage() {
             <CustomInput label="Email" placeholder="johndoe@email.com" />
           </div>
         </form>
-          {/* Continue button */}
-          <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10">
-            Continue
-          </button>
-            {/* Link to News Page */}
-            <div className="w-full mb-10">
-              <a href="/home-news/news" className="block bg-green-600 hover:bg-green-700 transition rounded-full py-3 font-semibold text-center">
-                Go to News Page
-              </a>
-            </div>
+        {/* Continue button */}
+        <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10">
+          Continue
+        </button>
+        {/* Link to News Page */}
+        <div className="w-full mb-10">
+          <a
+            href="/home-news/news"
+            className="block bg-green-600 hover:bg-green-700 transition rounded-full py-3 font-semibold text-center"
+          >
+            Go to News Page
+          </a>
         </div>
       </div>
     </div>

@@ -8,38 +8,14 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-
+import { useRouter } from "next/navigation";
 
 export default function VerifyOtpPage() {
-  const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
-  const inputsRef = useRef<Array<HTMLInputElement | null>>([]);
+  const [otp, setOtp] = useState<string>("");
   const router = useRouter();
 
-  const handleChange = (value: string, index: number) => {
-    if (!/^\d?$/.test(value)) return;
-
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    if (value && index < inputsRef.current.length - 1) {
-      inputsRef.current[index + 1]?.focus();
-    }
-  };
-
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number
-  ) => {
-    if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputsRef.current[index - 1]?.focus();
-    }
-  };
-
   const handleVerify = () => {
-    const code = otp.join("");
-    console.log("OTP:", code);
-    // verify OTP logic here
+    console.log("OTP:", otp);
     router.push("/profile-setup");
   };
 
@@ -84,6 +60,7 @@ export default function VerifyOtpPage() {
             ))}
           </InputOTPGroup>
         </InputOTP>
+
         <div className="text-right mt-3 mb-8">
           <button className="text-sm text-blue-500 hover:underline">
             Resend code

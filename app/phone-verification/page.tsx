@@ -5,8 +5,6 @@ import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
-import { useState } from "react"
-
 export default function PhoneVerification() {
   const [phone, setPhone] = useState("");
 
