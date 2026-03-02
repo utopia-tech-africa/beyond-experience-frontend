@@ -66,7 +66,7 @@ export default function LoginPage() {
 
         {/* Login button */}
         <Link
-          href="/profile-setup"
+          href="/phone-verification"
           className="w-full inline-block bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold text-center"
         >
           Login

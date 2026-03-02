@@ -1,13 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Hide scrollbar utility */
+.hide-scrollbar {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+
+
 
 /* Global h1 styling per design */
+
 h1 {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas);
   font-weight: 400;
   font-style: normal;
   font-size: 32px;
@@ -15,6 +28,17 @@ h1 {
   letter-spacing: 0;
   vertical-align: middle;
 }
+
+h2 {
+  font-family: var(--font-bebas);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 100%;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
 
 .page-vid-overlay {
   position: absolute;
@@ -30,5 +54,3 @@ h1 {
   transform: rotate(0deg);
 
 }
-
-
