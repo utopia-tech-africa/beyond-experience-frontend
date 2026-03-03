@@ -1,7 +1,8 @@
 "use client";
 
-import ChangePassword from "../components/changePassword";
-import ForgotPassword from "../components/forgotPassword";
+import { Splash } from "next/font/google";
+import SplashScreen from "../components/splash-screen";
+import SecondSplashScreen from "../components/second-splash-screen";
 
 
 const Page = () => {
@@ -9,7 +10,9 @@ const Page = () => {
   return (
     <div className="space-y-6 flex flex-col h-full font-bold">
       {/* <ChangePassword /> */}
-      <ForgotPassword/>
+   <SplashScreen/>
+   {/* <SecondSplashScreen/> */}
+
     </div>
   );
 };

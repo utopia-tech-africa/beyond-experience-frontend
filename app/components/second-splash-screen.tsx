@@ -2,7 +2,7 @@ import React from 'react'
 
 const SecondSplashScreen = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center min-h-screen">
         <video
             muted
             loop

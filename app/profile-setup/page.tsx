@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { Camera } from "lucide-react";
 import { useRef } from "react";
-import VideoOverlay from "../components/VideoOverlay";
+import { useRouter } from "next/navigation";
 import Vector from "../components/Vector";
 
 export default function ProfileSetupPage() {
   const fileRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
@@ -106,15 +107,19 @@ export default function ProfileSetupPage() {
           </div>
 
           {/* Continue button */}
-          <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10">
+          <button 
+            onClick={() => router.push('/home-news/news')}
+            className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10"
+          >
             Continue
           </button>
-            {/* Link to News Page */}
+
+            {/* Link to News Page
             <div className="w-full mb-10">
               <a href="/home-news/news" className="block bg-green-600 hover:bg-green-700 transition rounded-full py-3 font-semibold text-center">
                 Go to News Page
               </a>
-            </div>
+            </div> */}
         </div>
       </div>
     </div>

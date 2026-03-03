@@ -8,7 +8,7 @@ export default function PhoneVerification() {
   const [phone, setPhone] = useState("")
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0b1a2d] to-black flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-sm px-6 text-white">
 
         {/* Back button */}

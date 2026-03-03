@@ -145,6 +145,7 @@ export default function HomePage() {
         <div className="flex items-center justify-between pt-6">
           {/* Profile */}
           <img
+          
             src="https://i.pravatar.cc/100"
             alt="profile"
             className="w-10 h-10 rounded-full"
