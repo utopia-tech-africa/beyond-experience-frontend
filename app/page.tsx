@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="max-w-md h-dvh flex flex-col items-center px-6 overflow-hidden">
+    <div className="max-w-md h-full flex flex-col items-center overflow-hidden">
       <div className="flex-1 flex items-center justify-center w-full">
         <video
           muted
@@ -28,12 +28,12 @@ export default function Home() {
 
       <div className="w-full flex flex-col gap-4 mb-12">
         <Link href="/account">
-          <button className="bg-[#112D7A] text-white py-4 rounded-full font-semibold text-base shadow-lg w-full">
+          <button className="bg-[#112D7A] text-white py-4 rounded-full font-semibold text-base shadow-lg w-full cursor-pointer">
             Create account
           </button>
         </Link>
         <Link href="/login">
-          <button className="border border-white text-white py-4 rounded-full font-semibold text-base w-full">
+          <button className="border border-white text-white py-4 rounded-full font-semibold text-base w-full cursor-pointer">
             Login
           </button>
         </Link>
