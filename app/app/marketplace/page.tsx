@@ -49,7 +49,7 @@ const LISTINGS = [
 
 const Page = () => {
   return (
-    <div className="h-full space-y-5">
+    <div className="h-full space-y-5 py-2  px-6">
       <NavBar title="DWAM" />
       <SearchBar />
       <ScrollArea className="h-[calc(100vh-180px)] rounded-md">
@@ -62,6 +62,7 @@ const Page = () => {
               description={item.description}
               time={item.time}
               location={item.location}
+              id={item.id}
             />
           ))}
         </div>

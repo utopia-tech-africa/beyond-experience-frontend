@@ -34,7 +34,7 @@ export default function Page() {
   });
 
   return (
-    <div className="space-y-6 flex flex-col h-full">
+    <div className="space-y-6 px-6 py-2 flex flex-col h-full">
       <TopBar title="PROFILE" />
       <ImagePicker />
       <form

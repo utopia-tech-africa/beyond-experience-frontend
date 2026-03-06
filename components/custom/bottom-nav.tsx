@@ -42,45 +42,54 @@ const NavItem = ({
   );
 };
 
+const isAvalidBottomNavPage = (path: string) => {
+  const pages = pageItems.map((page) => page.href);
+  return pages.includes(path);
+};
+
 const BottomNav = () => {
   const pathname = usePathname();
 
   return (
-    <div className="absolute bottom-9 left-1/2 -translate-x-1/2 w-[92%] max-w-md">
-      <div
-        className="relative flex items-center justify-around px-2 py-3 rounded-[2rem] overflow-hidden"
-        style={{
-          background: "rgba(30, 30, 40, 0.55)",
-          backdropFilter: "blur(28px) saturate(160%)",
-          WebkitBackdropFilter: "blur(28px) saturate(160%)",
-          border: "1px solid rgba(255, 255, 255, 0.14)",
-          boxShadow: `
+    <>
+      {isAvalidBottomNavPage(pathname) && (
+        <div className="absolute bottom-9 left-1/2 -translate-x-1/2 w-[92%] max-w-md">
+          <div
+            className="relative flex items-center justify-around px-2 py-3 rounded-[2rem] overflow-hidden"
+            style={{
+              background: "rgba(30, 30, 40, 0.55)",
+              backdropFilter: "blur(28px) saturate(160%)",
+              WebkitBackdropFilter: "blur(28px) saturate(160%)",
+              border: "1px solid rgba(255, 255, 255, 0.14)",
+              boxShadow: `
             0 8px 32px rgba(0, 0, 0, 0.35),
             0 2px 8px rgba(0, 0, 0, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 0.18),
             inset 0 -1px 0 rgba(0, 0, 0, 0.1)
           `,
-        }}
-      >
-        <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.35) 50%, transparent 95%)",
-          }}
-        />
+            }}
+          >
+            <div
+              className="absolute inset-x-0 top-0 h-px"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.35) 50%, transparent 95%)",
+              }}
+            />
 
-        {pageItems.map((page) => (
-          <NavItem
-            key={page.label}
-            icon={page.icon}
-            label={page.label}
-            href={page.href}
-            active={pathname === page.href}
-          />
-        ))}
-      </div>
-    </div>
+            {pageItems.map((page) => (
+              <NavItem
+                key={page.label}
+                icon={page.icon}
+                label={page.label}
+                href={page.href}
+                active={pathname === page.href}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

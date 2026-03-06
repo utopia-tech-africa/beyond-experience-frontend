@@ -1,6 +1,7 @@
 "use client";
 import { FadersHorizontalIcon, MapPinIcon } from "@phosphor-icons/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const MarketplaceCard = ({
@@ -9,15 +10,21 @@ const MarketplaceCard = ({
   description,
   time,
   location,
+  id,
 }: {
   title: string;
   imageUrl: string;
   description: string;
   time?: string;
   location: string;
+  id: string | number;
 }) => {
+  const router = useRouter();
   return (
-    <div className=" rounded-lg p-3 bg-[#ADADAD1A]">
+    <div
+      className=" rounded-lg p-3 bg-[#ADADAD1A] cursor-pointer"
+      onClick={() => router.push(`marketplace/${id}`)}
+    >
       <Image
         src={imageUrl}
         alt={title}

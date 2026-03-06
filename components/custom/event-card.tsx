@@ -1,20 +1,28 @@
+"use client";
+
 import { MapPin } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
 
 const EventCard = ({
   imgUrl,
   title,
   description,
   location,
+  id,
 }: {
   imgUrl: string;
   title: string;
   description: string;
   location: string;
+  id: string | number;
 }) => {
+  const router = useRouter();
   return (
-    <div className="flex flex-col gap-3 text-white bg-[#ADADAD1A] p-3 rounded-lg">
+    <div
+      className="flex flex-col gap-3 text-white bg-[#ADADAD1A] rounded-lg cursor-pointer"
+      onClick={() => router.push(`events/${id}`)}
+    >
       <Image
         src={imgUrl}
         alt={title}

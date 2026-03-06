@@ -51,7 +51,7 @@ const EVENTS = [
 
 const Page = () => {
   return (
-    <div className="flex flex-col h-full space-y-5">
+    <div className="flex flex-col px-6 h-full py-2 space-y-5">
       {/* Fixed top */}
       <div className="shrink-0">
         <NavBar
@@ -70,6 +70,7 @@ const Page = () => {
               title={event.title}
               description={event.description}
               location={event.location}
+              id={event.id}
             />
           ))}
         </div>

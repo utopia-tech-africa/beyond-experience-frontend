@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
       >
         {/* <div className="app-content relative">{children}</div> */}
-        <div className="h-full px-6 py-2 max-w-md mx-auto">{children}</div>
+        <div className="h-full md:max-w-md mx-auto">{children}</div>
       </body>
     </html>
   );
