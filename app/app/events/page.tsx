@@ -4,7 +4,6 @@ import NavBar from "@/components/custom/nav-bar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CalendarDays } from "lucide-react";
 
-
 const EVENTS = [
   {
     id: 1,
@@ -52,7 +51,7 @@ const EVENTS = [
 
 const Page = () => {
   return (
-    <div className="flex flex-col h-screen space-y-5 py-2">
+    <div className="flex flex-col h-full space-y-5">
       {/* Fixed top */}
       <div className="shrink-0">
         <NavBar
@@ -60,23 +59,22 @@ const Page = () => {
           component={<CalendarDays className="text-white" size={24} />}
         />
       </div>
-<WeekDaysStrip />
+      <WeekDaysStrip />
       {/* Scrollable content */}
-      <ScrollArea className="h-[calc(100vh-180px)] rounded-md border p-4">
-  <div className="flex flex-col gap-3">
-    {EVENTS.map((event) => (
-      <EventCard
-        key={event.id}
-        imgUrl={event.imgUrl}
-        title={event.title}
-        description={event.description}
-        location={event.location}
-      />
-    ))}
-  </div>
-</ScrollArea>
-      </div>
-    
+      <ScrollArea className="h-[calc(100vh-180px)] rounded-md">
+        <div className="flex flex-col gap-3">
+          {EVENTS.map((event) => (
+            <EventCard
+              key={event.id}
+              imgUrl={event.imgUrl}
+              title={event.title}
+              description={event.description}
+              location={event.location}
+            />
+          ))}
+        </div>
+      </ScrollArea>
+    </div>
   );
 };
 

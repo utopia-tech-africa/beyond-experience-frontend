@@ -3,7 +3,7 @@ import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative h-full ">
+    <div className="relative h-full">
       {children}
       <BottomNav />
     </div>
