@@ -1,6 +1,5 @@
 "use client";
 
-import ChangePassword from "@/components/custom/change-password";
 import ChannelMenu from "@/components/custom/channel-menu";
 import ForgotPassword from "@/components/custom/forgot-password-otp";
 import SideMenu from "@/components/custom/side-menu";

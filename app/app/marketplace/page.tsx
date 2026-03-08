@@ -15,9 +15,9 @@ const LISTINGS = [
   },
   {
     id: 2,
-    title: "SoundWave Audio",
-    imageUrl: "/images/marketplace-image.png",
-    description: "Audio equipment",
+    title: "In his time",
+    imageUrl: "/images/marketplace-img.png",
+    description: "Metal fabricators",
     time: "9:00 am - 6:00 pm",
     location: "Osu, Accra",
   },
@@ -32,7 +32,7 @@ const LISTINGS = [
   {
     id: 4,
     title: "DroneVision GH",
-    imageUrl: "/images/marketplace-image.png",
+    imageUrl: "/images/marketplace-img.png",
     description: "Drone rental",
     time: "8:00 am - 5:00 pm",
     location: "Tema, Accra",

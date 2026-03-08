@@ -35,11 +35,11 @@ const Page = () => {
         <div className="absolute top-0 left-0 right-0 flex items-center justify-between px-4 pt-12">
           <ArrowLeftIcon
             size={24}
-            onClick={() => router.push("/app/events")}
+            onClick={() => router.push("/app/marketplace")}
             className="cursor-pointer text-white transition-transform ease-out duration-500 hover:-translate-x-1"
           />
           <h1 className="text-white font-bold text-sm tracking-widest uppercase">
-            Event Details
+            Marketplace Details
           </h1>
           <div className="w-6" />
         </div>

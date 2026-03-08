@@ -13,7 +13,7 @@ const NavBar = ({
         <AvatarImage src="https://github.com/shadcn.png" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <p className="text-xl text-white">{title}</p>
+      <p className="text-xl font-normal text-[#F8F9FA]">{title}</p>
       <div>{component}</div>
     </div>
   );
