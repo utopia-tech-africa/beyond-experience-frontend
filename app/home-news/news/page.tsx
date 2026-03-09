@@ -10,6 +10,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 interface NewsItem {
   id: number;
   category: string;
@@ -20,6 +21,7 @@ interface NewsItem {
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const router = useRouter();
 
   // Split categories for custom placement
   const categories1 = ["All", "Sports", "Music", "Fashion", "Entertainment"];
@@ -198,7 +200,8 @@ export default function HomePage() {
                   {firstEntertainmentGroup.map((item) => (
                     <div
                       key={item.id}
-                      className="bg-[#0f223a] rounded-2xl overflow-hidden flex-shrink-0 w-[85%]"
+                      onClick={() => router.push(`/home-news/news/${item.id}`)}
+                      className="bg-[#0f223a] rounded-2xl overflow-hidden flex-shrink-0 w-[85%] cursor-pointer hover:opacity-90 transition"
                     >
                       <div className="relative">
                         <img
@@ -249,7 +252,8 @@ export default function HomePage() {
               result.push(
                 <div
                   key={item.id}
-                  className="bg-[#0f223a] rounded-2xl overflow-hidden"
+                  onClick={() => router.push(`/home-news/news/${item.id}`)}
+                  className="bg-[#0f223a] rounded-2xl overflow-hidden cursor-pointer hover:opacity-90 transition"
                 >
                   <div className="relative">
                     <img
@@ -275,7 +279,8 @@ export default function HomePage() {
               result.push(
                 <div
                   key={item.id}
-                  className="bg-[#0f223a] rounded-2xl overflow-hidden"
+                  onClick={() => router.push(`/home-news/news/${item.id}`)}
+                  className="bg-[#0f223a] rounded-2xl overflow-hidden cursor-pointer hover:opacity-90 transition"
                 >
                   <div className="relative">
                     <img

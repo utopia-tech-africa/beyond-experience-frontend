@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { dummyPosts } from "./data/dummyPosts";
-import { MessageCircle, ThumbsUp, ThumbsDown, Plus, Home, Calendar, ShoppingBag, MessageSquare, Bell, Share2 } from "lucide-react";
+import { MessageCircle, ThumbsUp, ThumbsDown, Plus, Bell, Share2 } from "lucide-react";
+import { House, CalendarBlank, Storefront, ChatsCircle } from "@phosphor-icons/react";
 import Image from "next/image";
 
 export default function Forum() {
@@ -11,9 +12,11 @@ export default function Forum() {
       <div className="w-full max-w-md mx-auto relative">
         {/* Header - Fixed */}
         <div className="sticky top-0 z-30 bg-[#0a0f1a] flex items-center justify-between px-5 py-4">
-          <div className="w-14 h-14 rounded-full overflow-hidden">
-            <Image src="/Profile1.jpg" alt="Profile" width={56} height={56} className="object-cover" />
-          </div>
+          <Link href="/forum/profile">
+            <div className="w-14 h-14 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition">
+              <Image src="/Profile1.jpg" alt="Profile" width={56} height={56} className="object-cover" />
+            </div>
+          </Link>
           <h1 className="font-bold text-xl tracking-[0.3em]">FORUM</h1>
           <div className="relative">
             <Bell className="w-6 h-6 text-white" strokeWidth={2} />
@@ -118,19 +121,19 @@ export default function Forum() {
           >
             <div className="flex justify-around items-center py-3 px-6">
               <Link href="/" className="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition py-2 min-w-[70px]">
-                <Home className="w-6 h-6" strokeWidth={2} />
+                <House size={24} weight="regular" />
                 <span className="text-[11px]">Home</span>
               </Link>
               <Link href="/events" className="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition py-2 min-w-[70px]">
-                <Calendar className="w-6 h-6" strokeWidth={2} />
+                <CalendarBlank size={24} weight="regular" />
                 <span className="text-[11px]">Events</span>
               </Link>
               <Link href="/marketplace" className="flex flex-col items-center gap-1 text-gray-400 hover:text-white transition py-2 min-w-[70px]">
-                <ShoppingBag className="w-6 h-6" strokeWidth={2} />
+                <Storefront size={24} weight="regular" />
                 <span className="text-[11px]">Marketplace</span>
               </Link>
               <Link href="/forum" className="flex flex-col items-center gap-1 text-blue-500 py-2 min-w-[70px]">
-                <MessageSquare className="w-6 h-6 fill-blue-500" strokeWidth={2} />
+                <ChatsCircle size={24} weight="fill" />
                 <span className="text-[11px] font-semibold">Forum</span>
               </Link>
             </div>
