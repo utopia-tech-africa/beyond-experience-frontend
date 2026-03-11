@@ -7,6 +7,7 @@ import {
   CaretDown,
   AlignLeft,
   Tag,
+  TicketIcon,
 } from "@phosphor-icons/react";
 import CustomInput from "@/components/ui/custom-input";
 import { DatePicker } from "@/components/custom/date-picker";
@@ -21,34 +22,28 @@ export default function Page() {
   const [ticketDropdownOpen, setTicketDropdownOpen] = useState(false);
 
   return (
-    <div className="min-h-screen text-white flex flex-col">
+    <div className="h-full text-white flex flex-col">
       {/* Header */}
       <div className="flex items-center justify-center relative px-5 pt-14 pb-5">
         <button className="absolute left-5 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
           <ArrowLeft size={20} weight="bold" className="text-white" />
         </button>
         <h1 className="text-lg font-bold tracking-[0.15em] uppercase text-white">
-          New Job
+          New Event
         </h1>
       </div>
 
       {/* Form */}
-      <div className="flex-1 px-5 pb-10 flex flex-col gap-5 overflow-y-auto">
+      <div className="flex-1 px-4 py-3 flex flex-col gap-2.5 overflow-y-auto">
         {/* Event Name */}
         <CustomInput
           label="Event Name:"
           placeholder="Enter event name"
           type="text"
-          defaultValue="Fifa Club World Cup Viewing"
         />
 
         {/* Location */}
-        <CustomInput
-          label="Location:"
-          placeholder="Enter location"
-          type="text"
-          defaultValue="Accra...."
-        />
+        <CustomInput label="Location:" placeholder="Accra...." type="text" />
 
         {/* Date */}
         <DatePicker label="Date:" placeholder="Choose date" />
@@ -56,9 +51,9 @@ export default function Page() {
         {/* Time */}
         <div className="space-y-2">
           <label className="text-white font-semibold text-base">Time:</label>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 overflow-hidden">
             {/* Start Time */}
-            <div className="flex items-center gap-2 border border-[#4C5C6B] px-4 h-12 flex-1">
+            <div className="flex items-center gap-2 border border-[#4C5C6B] rounded-[9px] px-4 h-12 flex-1 min-w-0">
               <input
                 type="text"
                 value={startTime}
@@ -68,11 +63,11 @@ export default function Page() {
               />
             </div>
 
-            <span className="text-white/40 font-light text-lg">–</span>
+            <span className="text-white/40 font-light text-lg shrink-0">–</span>
 
             {/* End Time */}
-            <div className="flex items-center gap-2 border border-[#4C5C6B] px-4 h-12 flex-1">
-            ``  <input
+            <div className="flex items-center gap-2 border border-[#4C5C6B] rounded-[9px] px-4 h-12 flex-1 min-w-0">
+              <input
                 type="text"
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
@@ -88,7 +83,7 @@ export default function Page() {
           <label className="text-white font-semibold text-base">
             Event description:
           </label>
-          <div className="flex gap-3 border border-[#4C5C6B] rounded-2xl px-5 py-3.5">
+          <div className="flex gap-3 border border-[#4C5C6B] rounded-lg px-4 py-3">
             <AlignLeft size={18} className="text-white/40 shrink-0 mt-0.5" />
             <textarea
               value={description}
@@ -108,17 +103,17 @@ export default function Page() {
           <button
             type="button"
             onClick={() => setTicketDropdownOpen((v) => !v)}
-            className="flex items-center gap-3 border border-[#4C5C6B] rounded-full px-5 h-12 w-full text-left hover:bg-white/5 transition-colors"
+            className="flex items-center gap-3 border border-[#4C5C6B] rounded-full px-4 h-12 w-full text-left hover:bg-white/5 transition-colors"
           >
-            <Tag size={18} className="text-white/40 shrink-0" />
+            <TicketIcon size={20} />
             <span
-              className={`flex-1 text-sm ${ticketType ? "text-white" : "text-muted-foreground"}`}
+              className={`flex-1 text-sm ${ticketType ? "text-[#9CAAB8]" : "text-muted-foreground"}`}
             >
               {ticketType || "Ticketed/Free"}
             </span>
             <CaretDown
               size={16}
-              className={`text-muted-foreground border border-[#4C5C6B] rounded-full p-0.5 transition-transform duration-200 ${ticketDropdownOpen ? "rotate-180" : ""}`}
+              className={`text-muted-foreground p-0.5 transition-transform duration-200 ${ticketDropdownOpen ? "rotate-180" : ""}`}
             />
           </button>
 
@@ -141,16 +136,15 @@ export default function Page() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Share Button */}
-      <div className="px-5 pb-10 pt-2">
-        <button
-          type="button"
-          className="w-full bg-[#2850e8] hover:bg-[#3560f5] active:bg-[#1e40d4] transition-colors text-white font-semibold text-base rounded-full py-4 tracking-wide shadow-lg shadow-blue-900/40"
-        >
-          Share
-        </button>
+        {/* Share Button */}
+        <div className="px-3.5 pb-8 pt-2.75">
+          <button
+            type="button"
+            className="w-full bg-[#0E2B77] active:bg-[#1e40d4] transition-colors text-white font-semibold text-base rounded-full px-6 py-3 gap-2.5 opacity-100 tracking-wide shadow-lg shadow-blue-900/40 flex items-center justify-center"
+          >
+            Share
+          </button>
+        </div>
       </div>
     </div>
   );
