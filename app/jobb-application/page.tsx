@@ -64,7 +64,7 @@ export default function Page() {
           <button
             type="button"
             onClick={addLocation}
-            className="flex items-center gap-1.5 bg-[#0E2B77] hover:bg-[#1e40d4] transition-colors text-white text-sm font-semibold px-4 py-2 rounded-full"
+            className="flex items-center gap-1.5 bg-[#0E2B77]  transition-colors text-white text-sm font-semibold px-4 py-2 rounded-full"
           >
             <Plus size={14} weight="bold" />
             Add

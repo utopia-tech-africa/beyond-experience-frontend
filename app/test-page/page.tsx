@@ -9,6 +9,7 @@ const Page = () => {
   return (
     <div className="space-y-6 flex flex-col h-full font-bold">
       <ChannelMenu/>
+      {/* <SplashScreen /> */}
     </div>
   );
 };

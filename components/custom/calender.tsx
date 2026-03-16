@@ -60,7 +60,7 @@ const WeekDaysStrip = ({
               onClick={() => handleSelect(normalizedFull)}
               className="flex flex-col items-center gap-1 shrink-0 focus:outline-none py-1"
               style={{
-                width: "calc(100% / 5)", // 5 visible — relative to the OUTER overflow:hidden div
+                width: "calc(100% / 5)",
                 scrollSnapAlign: "start",
                 padding: 0,
               }}
