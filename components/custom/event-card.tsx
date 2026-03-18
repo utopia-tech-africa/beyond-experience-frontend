@@ -11,6 +11,7 @@ const EventCard = ({
   location,
   id,
   onEdit,
+  showEditButton = false,
 }: {
   imgUrl: string;
   title: string;
@@ -18,6 +19,7 @@ const EventCard = ({
   location: string;
   id: string | number;
   onEdit?: (e: React.MouseEvent) => void;
+  showEditButton?: boolean;
 }) => {
   const router = useRouter();
   return (
@@ -35,7 +37,6 @@ const EventCard = ({
 
       <div className="flex flex-col gap-2">
         <p className="font-semibold text-base">{title}</p>
-
         <p className="text-sm text-gray-300 line-clamp-2">{description}</p>
 
         <div className="flex items-center justify-between">
@@ -70,15 +71,17 @@ const EventCard = ({
             <span>{location}</span>
           </div>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit?.(e);
-            }}
-            className="p-2 flex items-center justify-center w-11 h-6 rounded-full bg-[#0074E5] hover:bg-blue-600 transition-colors"
-          >
-            <Pencil size={14} className="text-white" />
-          </button>
+          {showEditButton && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit?.(e);
+              }}
+              className="p-2 flex items-center justify-center w-8 h-8 rounded-full bg-[#0074E5] hover:bg-blue-600 transition-colors"
+            >
+              <Pencil size={14} className="text-white" />
+            </button>
+          )}
         </div>
       </div>
     </div>

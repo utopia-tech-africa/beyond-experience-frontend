@@ -32,12 +32,13 @@ export default function Page() {
           <ArrowLeft size={20} weight="bold" className="text-white" />
         </button>
         <h1 className="text-lg font-bold tracking-[0.15em] uppercase text-white">
-          New Job
+          EDIT JOB DETAILS
         </h1>
       </div>
 
       <ScrollArea className="h-[calc(100vh-180px)] rounded-md">
         <div className="flex flex-col gap-2.5 px-4 py-3 pb-28">
+
           <CustomInput
             label="Job title:"
             placeholder="Graphic designer..."
@@ -45,6 +46,7 @@ export default function Page() {
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
           />
+
           <div className="space-y-2">
             <label className="text-white font-semibold text-base">
               Location:
@@ -145,7 +147,7 @@ export default function Page() {
           type="button"
           className="w-full bg-[#0E2B77] active:bg-[#1e40d4] transition-colors text-white font-semibold text-base rounded-full px-6 py-3 gap-2.5 tracking-wide shadow-lg shadow-blue-900/40 flex items-center justify-center"
         >
-          Share
+          Update
         </button>
       </div>
     </div>

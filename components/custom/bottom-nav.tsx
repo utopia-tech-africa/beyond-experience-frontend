@@ -135,6 +135,12 @@ const pageItems = [
   { icon: MarketplaceIcon, label: "Marketplace", href: "/app/marketplace" },
   { icon: ForumIcon, label: "Forum", href: "/app/forum" },
 ];
+const adminItems = [
+  { icon: HomeIcon, label: "Home", href: "/app/home" },
+  { icon: EventsIcon, label: "Events", href: "/app/event-board" },
+  { icon: MarketplaceIcon, label: "Marketplace", href: "/app/marketplace" },
+  { icon: ForumIcon, label: "Forum", href: "/app/forum" },
+];
 
 const NavItem = ({
   icon: Icon,
@@ -171,12 +177,15 @@ const NavItem = ({
 };
 
 const isAvalidBottomNavPage = (path: string) => {
-  const pages = pageItems.map((page) => page.href);
+  const allPageItems = [...pageItems, ...adminItems];
+  const pages = allPageItems.map((page) => page.href);
   return pages.includes(path);
 };
 
 const BottomNav = () => {
   const pathname = usePathname();
+  const isAdmin = false;
+  const navItems = isAdmin ? adminItems : pageItems;
 
   return (
     <>
@@ -205,7 +214,7 @@ const BottomNav = () => {
               }}
             />
 
-            {pageItems.map((page) => (
+            {navItems.map((page) => (
               <NavItem
                 key={page.label}
                 icon={page.icon}
