@@ -104,7 +104,9 @@ export default function ProfileSetupPage() {
           Continue
         </button>
         {/* Link to News Page */}
-        {/* <div className="w-full mb-10">
+
+        <div className="w-full mb-10">
+ main
           <a
             href="/home-news/news"
             className="block bg-green-600 hover:bg-green-700 transition rounded-full py-3 font-semibold text-center"
@@ -112,6 +114,7 @@ export default function ProfileSetupPage() {
             Go to News Page
           </a>
         </div> */}
+        </div>
       </div>
     </div>
   );
