@@ -1,4 +1,9 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
+import SideMenu from "./side-menu";
+
 
 const NavBar = ({
   title = "TEST",
@@ -7,15 +12,28 @@ const NavBar = ({
   title: string;
   component?: React.ReactNode;
 }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="flex items-center justify-between">
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <p className="text-xl text-white">{title}</p>
-      <div>{component}</div>
-    </div>
+    <>
+      <div className="flex items-center justify-between">
+        {/* Avatar triggers the side menu */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          className="rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500/60 transition-transform active:scale-95"
+        >
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </button>
+
+        <p className="text-xl font-normal text-[#F8F9FA]">{title}</p>
+        <div>{component}</div>
+      </div>
+
+      {menuOpen && <SideMenu onClose={() => setMenuOpen(false)} />}
+    </>
   );
 };
 

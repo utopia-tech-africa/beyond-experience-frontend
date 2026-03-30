@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
@@ -16,13 +15,10 @@ export default function PhoneVerification() {
       }}
     >
       <div className="w-full max-w-sm px-6 text-white">
-
-        
         <div className="flex items-center mb-10">
           <button>
             <ArrowLeft className="w-5 h-5 text-gray-300" />
           </button>
-          
         </div>
         <h1 className="text-3xl font-extrabold uppercase mb-8 tracking-tight">
           Verify Your Number
@@ -33,7 +29,6 @@ export default function PhoneVerification() {
             defaultCountry="GH"
             value={phone}
             onChange={(val) => setPhone(val as string)}
-           
             className="flex items-center rounded-full border border-gray-500 px-4 py-3 bg-transparent"
             numberInputClass="bg-transparent text-white outline-none flex-1 ml-2"
           />
@@ -45,7 +40,6 @@ export default function PhoneVerification() {
         >
           Send code
         </Link>
-
       </div>
     </div>
   );

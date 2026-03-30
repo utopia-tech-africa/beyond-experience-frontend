@@ -43,10 +43,8 @@ export default function ProfileSetupPage() {
   });
 
   return (
-    <div className="min-h-screen   text-white flex justify-center">
-      <div className="w-full max-w-sm px-6 pt-6">
-        <div className="flex justify-between items-center text-xs opacity-80 mb-6"></div>
-
+    <div className="h-full   text-white flex justify-center">
+      <div className="w-full max-w-sm">
         <div className="flex justify-center mb-8">
           <Vector />
         </div>
@@ -106,13 +104,16 @@ export default function ProfileSetupPage() {
           Continue
         </button>
         {/* Link to News Page */}
+
         <div className="w-full mb-10">
+ main
           <a
             href="/home-news/news"
             className="block bg-green-600 hover:bg-green-700 transition rounded-full py-3 font-semibold text-center"
           >
             Go to News Page
           </a>
+        </div> */}
         </div>
       </div>
     </div>

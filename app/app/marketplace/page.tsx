@@ -15,9 +15,9 @@ const LISTINGS = [
   },
   {
     id: 2,
-    title: "SoundWave Audio",
-    imageUrl: "/images/marketplace-image.png",
-    description: "Audio equipment",
+    title: "In his time",
+    imageUrl: "/images/marketplace-img.png",
+    description: "Metal fabricators",
     time: "9:00 am - 6:00 pm",
     location: "Osu, Accra",
   },
@@ -32,7 +32,7 @@ const LISTINGS = [
   {
     id: 4,
     title: "DroneVision GH",
-    imageUrl: "/images/marketplace-image.png",
+    imageUrl: "/images/marketplace-img.png",
     description: "Drone rental",
     time: "8:00 am - 5:00 pm",
     location: "Tema, Accra",
@@ -49,10 +49,10 @@ const LISTINGS = [
 
 const Page = () => {
   return (
-    <div className="h-full space-y-5 py-2">
+    <div className="h-full space-y-5 py-2  px-6">
       <NavBar title="DWAM" />
-      <SearchBar className="mx-4" />
-      <ScrollArea className="h-[calc(100vh-180px)] rounded-md border p-4">
+      <SearchBar />
+      <ScrollArea className="h-[calc(100vh-180px)] rounded-md">
         <div className="space-y-3">
           {LISTINGS.map((item) => (
             <MarketplaceCard
@@ -62,6 +62,7 @@ const Page = () => {
               description={item.description}
               time={item.time}
               location={item.location}
+              id={item.id}
             />
           ))}
         </div>

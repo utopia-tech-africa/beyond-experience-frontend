@@ -58,9 +58,9 @@ const WeekDaysStrip = ({
             <button
               key={label + date}
               onClick={() => handleSelect(normalizedFull)}
-              className="flex flex-col items-center gap-1 flex-shrink-0 focus:outline-none py-1"
+              className="flex flex-col items-center gap-1 shrink-0 focus:outline-none py-1"
               style={{
-                width: "calc(100% / 5)", // 5 visible — relative to the OUTER overflow:hidden div
+                width: "calc(100% / 5)",
                 scrollSnapAlign: "start",
                 padding: 0,
               }}
@@ -70,7 +70,7 @@ const WeekDaysStrip = ({
                 style={{
                   fontSize: "clamp(0.7rem, 2vw, 0.9rem)",
                   letterSpacing: "0.12em",
-                  color: isActive ? "#3B82F6" : "rgba(160, 165, 180, 0.75)",
+                  color: isActive ? "#0074E5" : "rgba(160, 165, 180, 0.75)",
                 }}
               >
                 {label}
@@ -82,7 +82,7 @@ const WeekDaysStrip = ({
                   fontSize: "clamp(1.3rem, 4.5vw, 2rem)",
                   lineHeight: 1,
                   fontWeight: 900,
-                  color: isActive ? "#3B82F6" : "rgba(130, 138, 160, 0.8)",
+                  color: isActive ? "#0074E5" : "rgba(130, 138, 160, 0.8)",
                 }}
               >
                 {date}
