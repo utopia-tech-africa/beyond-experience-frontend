@@ -24,7 +24,7 @@ export default function CustomInput({
       <div className="relative w-full">
         <div className="space-y-2">
 <Input
-  className="rounded-full border-[#4C5C6B] h-12 px-5"
+  className="rounded-full border-[#4C5C6B] h-12 px-4"
   placeholder={placeholder}
   type={inputType}
   {...props}

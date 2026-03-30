@@ -46,7 +46,7 @@ const Page = () => {
       </div>
 
       {/* Content Card — overlaps image with negative margin */}
-      <div className="relative -top-20 px-4 pt-6 rounded-t-3xl bg-[#060D18] flex flex-col justify-between h-[calc(100%-277px)] pb-2">
+      <div className="relative -top-20 px-4 pt-6 rounded-t-3xl bg-[linear-gradient(180deg,rgba(10,37,59,0.7)_-2.64%,#000000_34.19%,#000000_78.79%)] flex flex-col justify-between h-[calc(100%-277px)] pb-2">
         {/* Title */}
         <div className="space-y-4">
           <div className="flex justify-between items-start">

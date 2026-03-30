@@ -35,3 +35,46 @@ h2 {
   letter-spacing: 0;
   vertical-align: middle;
 }
+.nav-title {
+  font-family: var(--font-bebas);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+.week-strip-label,
+.week-strip-date {
+  font-family: var(--font-bebas);
+  font-weight: 400;
+}
+.event-p {
+  font-family: var(--font-sofia);
+  line-height: 21px;
+  letter-spacing: 0px;
+}
+.welcome-p {
+  font-family: var(--font-sofia);
+  line-height: 20px;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.topbar {
+  font-family: var(--font-bebas);
+  line-height: 100%;
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 26px;
+  vertical-align: middle;
+}
+/* p{
+  font-family: var(--font-sofia);
+  line-height: 18.2px;
+  letter-spacing: 0px;
+  font-weight: 600;
+  font-size: 14px;
+  vertical-align: middle;
+} */
+

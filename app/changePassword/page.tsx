@@ -30,7 +30,6 @@ export default function ForgotPasswordPhonePage() {
 
   const onSubmit = (data: FormValues) => {
     console.log("Valid phone:", data.phoneNumber);
-    // send verification code logic
   };
 
   return (
@@ -38,7 +37,6 @@ export default function ForgotPasswordPhonePage() {
       <TopBar title="FORGOT PASSWORD" />
 
       <div className="mt-8 space-y-6 flex-1">
-        {/* Phone Field */}
         <div className="space-y-2">
           <label className="text-sm">Phone</label>
 
@@ -53,16 +51,16 @@ export default function ForgotPasswordPhonePage() {
               })
             }
             numberInputProps={{
-                className:
-                  "w-full rounded-lg px-4 py-1.5 text-white outline-none bg-transparent",
-              }}
-              containerComponentProps={{
-                className:
-                  "rounded-full border-[#4C5C6B] border flex flex-row px-4",
-              }}
-              countrySelectProps={{
-                className: "bg-[#0A253B]",
-              }}
+              className:
+                "w-full rounded-lg px-4 py-3 text-white outline-none bg-transparent",
+            }}
+            containerComponentProps={{
+              className:
+                "rounded-full border-[#4C5C6B] border flex flex-row px-4",
+            }}
+            countrySelectProps={{
+              className: "bg-[#0A253B]",
+            }}
             className={`w-full rounded-full border px-4 py-3 bg-transparent ${
               form.formState.errors.phoneNumber
                 ? "border-red-500"
@@ -70,7 +68,6 @@ export default function ForgotPasswordPhonePage() {
             }`}
           />
 
-          {/* Error Message */}
           {form.formState.errors.phoneNumber && (
             <p className="text-red-500 text-sm">
               {form.formState.errors.phoneNumber.message}
@@ -78,7 +75,6 @@ export default function ForgotPasswordPhonePage() {
           )}
         </div>
 
-        {/* Use Email */}
         <div className="text-center">
           <Link
             href="/forgotPassword"
@@ -89,7 +85,6 @@ export default function ForgotPasswordPhonePage() {
         </div>
       </div>
 
-      {/* Submit Button */}
       <button
         onClick={form.handleSubmit(onSubmit)}
         className="w-full bg-blue-700  transition rounded-3xl py-3 font-semibold mb-6"

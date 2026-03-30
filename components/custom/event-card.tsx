@@ -36,8 +36,8 @@ const EventCard = ({
       />
 
       <div className="flex flex-col gap-2">
-        <p className="font-semibold text-base">{title}</p>
-        <p className="text-sm text-gray-300 line-clamp-2">{description}</p>
+        <p className="font-semibold text-base event-p">{title}</p>
+        <p className="text-sm text-gray-300 line-clamp-2 event-p">{description}</p>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1 text-sm text-[#CAD2D9]">

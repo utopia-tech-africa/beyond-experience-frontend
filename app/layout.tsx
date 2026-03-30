@@ -1,6 +1,11 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Geist, Bebas_Neue, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Bebas_Neue,
+  Geist_Mono,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import "./globals.css";
 
 const bebas = Bebas_Neue({
@@ -9,6 +14,11 @@ const bebas = Bebas_Neue({
   weight: ["400"],
 });
 
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-sofia",
+  subsets: ["latin"],
+  weight: ["600"],
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,7 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} bg-[linear-gradient(180deg,#0A253B_-2.64%,#000000_34.19%,#000000_78.79%)] h-screen antialiased`}
+        className={`${geistSans.variable} ${bebas.variable} ${geistMono.variable} ${plusJakarta.variable} bg-[linear-gradient(180deg,#0A253B_-2.64%,#000000_34.19%,#000000_78.79%)] h-screen antialiased`}
         suppressHydrationWarning
       >
         {/* <div className="app-content relative">{children}</div> */}

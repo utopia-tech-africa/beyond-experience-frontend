@@ -66,10 +66,10 @@ const WeekDaysStrip = ({
               }}
             >
               <span
-                className="font-black tracking-widest transition-colors duration-200"
+                className="tracking-widest transition-colors duration-200 week-strip-label"
                 style={{
-                  fontSize: "clamp(0.7rem, 2vw, 0.9rem)",
-                  letterSpacing: "0.12em",
+                  fontSize: "32px",
+                  lineHeight: 1,
                   color: isActive ? "#0074E5" : "rgba(160, 165, 180, 0.75)",
                 }}
               >
@@ -77,11 +77,10 @@ const WeekDaysStrip = ({
               </span>
 
               <span
-                className="font-black transition-colors duration-200"
+                className="transition-colors duration-200 week-strip-date"
                 style={{
-                  fontSize: "clamp(1.3rem, 4.5vw, 2rem)",
+                  fontSize: "32px",
                   lineHeight: 1,
-                  fontWeight: 900,
                   color: isActive ? "#0074E5" : "rgba(130, 138, 160, 0.8)",
                 }}
               >
