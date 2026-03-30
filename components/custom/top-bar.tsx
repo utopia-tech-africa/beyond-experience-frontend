@@ -6,7 +6,7 @@ import React from "react";
 export default function TopBar({ title }: { title: string }) {
   const router = useRouter();
   return (
-    <div className="py-3">
+    <div className="py-3 topbar">
       <p className="text-white text-[26px] text-center relative">
         {" "}
         <ArrowLeft

@@ -11,7 +11,6 @@ export default function ForgotPasswordPage() {
 
   const handleSubmit = () => {
     console.log("Reset email:", email);
-    // send verification code logic here
   };
 
   return (
@@ -20,13 +19,8 @@ export default function ForgotPasswordPage() {
       <p className="text-white text-sm">
         Please enter your email to receive a verification code
       </p>
-      <CustomInput
-        label="Email"
-        placeholder="johndoe@email.com"
-        className="text-white"
-      />
+      <CustomInput label="Email" placeholder="johndoe@email.com" />
 
-      {/* Use phone instead */}
       <div className="text-center mb-10">
         <Link
           href="/changePassword"
@@ -36,10 +30,8 @@ export default function ForgotPasswordPage() {
         </Link>
       </div>
 
-      {/* Spacer to push button to bottom */}
       <div className="flex-1"></div>
 
-      {/* Send button */}
       <button
         onClick={handleSubmit}
         className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-3xl py-3 text-white font-semibold mb-6"

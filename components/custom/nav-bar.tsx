@@ -17,7 +17,6 @@ const NavBar = ({
   return (
     <>
       <div className="flex items-center justify-between">
-        {/* Avatar triggers the side menu */}
         <button
           onClick={() => setMenuOpen(true)}
           className="rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500/60 transition-transform active:scale-95"
@@ -28,7 +27,7 @@ const NavBar = ({
           </Avatar>
         </button>
 
-        <p className="text-xl font-normal text-[#F8F9FA]">{title}</p>
+        <p className="text-[#F8F9FA] nav-title">{title}</p>
         <div>{component}</div>
       </div>
 
