@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Vector from "../../components/Vector";
+import Vector from "../../../components/custom/vector";
 import {
   Search,
   Bell,
@@ -46,8 +46,7 @@ export default function HomePage() {
     {
       id: 3,
       category: "Entertainment",
-      title:
-        "Music festival brings together top artists from across Africa.",
+      title: "Music festival brings together top artists from across Africa.",
       time: "8 Hours ago",
       image:
         "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",
@@ -64,8 +63,7 @@ export default function HomePage() {
     {
       id: 5,
       category: "Entertainment",
-      title:
-        "Fashion show highlights emerging designers from West Africa.",
+      title: "Fashion show highlights emerging designers from West Africa.",
       time: "5 Hours ago",
       image:
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
@@ -73,8 +71,7 @@ export default function HomePage() {
     {
       id: 6,
       category: "Entertainment",
-      title:
-        "Annual film festival showcases local talent and creativity.",
+      title: "Annual film festival showcases local talent and creativity.",
       time: "7 Hours ago",
       image:
         "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80",
@@ -82,8 +79,7 @@ export default function HomePage() {
     {
       id: 7,
       category: "Sports",
-      title:
-        "Ghana's Black Stars qualify for the next round of African Cup.",
+      title: "Ghana's Black Stars qualify for the next round of African Cup.",
       time: "2 Hours ago",
       image:
         "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80",
@@ -91,8 +87,7 @@ export default function HomePage() {
     {
       id: 8,
       category: "Sports",
-      title:
-        "Local basketball league finals draw massive crowds in Accra.",
+      title: "Local basketball league finals draw massive crowds in Accra.",
       time: "4 Hours ago",
       image:
         "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80",
@@ -100,8 +95,7 @@ export default function HomePage() {
     {
       id: 9,
       category: "Music",
-      title:
-        "Afrobeats artist wins international music award.",
+      title: "Afrobeats artist wins international music award.",
       time: "1 Hour ago",
       image:
         "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80",
@@ -109,8 +103,7 @@ export default function HomePage() {
     {
       id: 10,
       category: "Music",
-      title:
-        "New album release breaks streaming records across Africa.",
+      title: "New album release breaks streaming records across Africa.",
       time: "5 Hours ago",
       image:
         "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",
@@ -118,8 +111,7 @@ export default function HomePage() {
     {
       id: 11,
       category: "Fashion",
-      title:
-        "Accra Fashion Week showcases sustainable African designs.",
+      title: "Accra Fashion Week showcases sustainable African designs.",
       time: "3 Hours ago",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80",
@@ -127,15 +119,11 @@ export default function HomePage() {
     {
       id: 12,
       category: "Fashion",
-      title:
-        "Local designer collaborates with international fashion house.",
+      title: "Local designer collaborates with international fashion house.",
       time: "6 Hours ago",
       image:
         "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80",
     },
-
-
-    
   ];
 
   return (
@@ -158,7 +146,11 @@ export default function HomePage() {
           {/* Search and Bell */}
           <div className="flex gap-4 text-gray-300">
             <Search className="w-5 h-5" />
-            <img src="/images/notification.png" alt="notification" className="w-5 h-5 filter invert brightness-100" />
+            <img
+              src="/images/notification.png"
+              alt="notification"
+              className="w-5 h-5 filter invert brightness-100"
+            />
           </div>
         </div>
 
@@ -181,19 +173,26 @@ export default function HomePage() {
                 activeCategory === "All" || item.category === activeCategory,
             );
             const result: React.ReactNode[] = [];
-            
+
             // Group news by category
-            const entertainmentNews = filteredNews.filter(item => item.category === "Entertainment");
-            const otherNews = filteredNews.filter(item => item.category !== "Entertainment");
-            
+            const entertainmentNews = filteredNews.filter(
+              (item) => item.category === "Entertainment",
+            );
+            const otherNews = filteredNews.filter(
+              (item) => item.category !== "Entertainment",
+            );
+
             // Split entertainment into two groups - first 3 and rest
             const firstEntertainmentGroup = entertainmentNews.slice(0, 3);
             const secondEntertainmentGroup = entertainmentNews.slice(3);
-            
+
             // Add first Entertainment cards as scrollable row (only if there are entertainment cards)
             if (firstEntertainmentGroup.length > 0) {
               result.push(
-                <div key="entertainment-scroll-1" className="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+                <div
+                  key="entertainment-scroll-1"
+                  className="flex gap-4 overflow-x-auto hide-scrollbar pb-2"
+                >
                   {firstEntertainmentGroup.map((item) => (
                     <div
                       key={item.id}
@@ -210,16 +209,20 @@ export default function HomePage() {
                         </span>
                         {/* Overlay text at the bottom of the image */}
                         <div className="absolute bottom-0 left-0 w-full p-4 bg-black/5">
-                          <p className="text-xs text-gray-200 mb-1">{item.time}</p>
-                          <p className="text-sm leading-relaxed text-white">{item.title}</p>
+                          <p className="text-xs text-gray-200 mb-1">
+                            {item.time}
+                          </p>
+                          <p className="text-sm leading-relaxed text-white">
+                            {item.title}
+                          </p>
                         </div>
                       </div>
                     </div>
                   ))}
-                </div>
+                </div>,
               );
             }
-            
+
             // Add categories buttons
             result.push(
               <div
@@ -240,9 +243,9 @@ export default function HomePage() {
                     {cat}
                   </button>
                 ))}
-              </div>
+              </div>,
             );
-            
+
             // Add other category cards (Digital, Sports, Music, Fashion) normally
             otherNews.forEach((item) => {
               result.push(
@@ -262,13 +265,15 @@ export default function HomePage() {
                     {/* Overlay text at the bottom of the image */}
                     <div className="absolute bottom-0 left-0 w-full p-4 bg-black/5">
                       <p className="text-xs text-gray-200 mb-1">{item.time}</p>
-                      <p className="text-sm leading-relaxed text-white">{item.title}</p>
+                      <p className="text-sm leading-relaxed text-white">
+                        {item.title}
+                      </p>
                     </div>
                   </div>
-                </div>
+                </div>,
               );
             });
-            
+
             // Add second Entertainment cards vertically
             secondEntertainmentGroup.forEach((item) => {
               result.push(
@@ -288,13 +293,15 @@ export default function HomePage() {
                     {/* Overlay text at the bottom of the image */}
                     <div className="absolute bottom-0 left-0 w-full p-4 bg-black/5">
                       <p className="text-xs text-gray-200 mb-1">{item.time}</p>
-                      <p className="text-sm leading-relaxed text-white">{item.title}</p>
+                      <p className="text-sm leading-relaxed text-white">
+                        {item.title}
+                      </p>
                     </div>
                   </div>
-                </div>
+                </div>,
               );
             });
-            
+
             return result;
           })()}
         </div>
