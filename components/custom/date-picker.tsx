@@ -1,22 +1,22 @@
-"use client"
-import * as React from "react"
-import { format } from "date-fns"
-import { ChevronDown } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+"use client";
+import * as React from "react";
+import { format } from "date-fns";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/popover";
+import { Label } from "@/components/ui/label";
 
 interface DatePickerProps {
-  label?: string
-  errorMessage?: string
-  placeholder?: string
-  defaultDate?: Date
+  label?: string;
+  errorMessage?: string;
+  placeholder?: string;
+  defaultDate?: Date;
 }
 
 export function DatePicker({
@@ -25,7 +25,7 @@ export function DatePicker({
   placeholder = "Pick a date",
   defaultDate,
 }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date | undefined>(defaultDate)
+  const [date, setDate] = React.useState<Date | undefined>(defaultDate);
 
   return (
     <div className="space-y-2 relative">
@@ -40,10 +40,14 @@ export function DatePicker({
                 variant="outline"
                 className={cn(
                   "w-full justify-between text-left font-normal rounded-full border-[#4C5C6B] hover:bg-[#111827] text-white px-5 h-12",
-                  !date && "text-muted-foreground"
+                  !date && "text-muted-foreground",
                 )}
               >
-                {date ? format(date, "dd MMMM, yyyy") : <span>{placeholder}</span>}
+                {date ? (
+                  format(date, "dd MMMM, yyyy")
+                ) : (
+                  <span>{placeholder}</span>
+                )}
                 <ChevronDown className="h-6 w-6 text-muted-foreground border border-[#4C5C6B] rounded-full p-0.5 shrink-0" />
               </Button>
             </PopoverTrigger>
@@ -52,7 +56,7 @@ export function DatePicker({
                 mode="single"
                 selected={date}
                 onSelect={setDate}
-                captionLayout="dropdown-buttons"
+                captionLayout="dropdown-months"
                 fromYear={1990}
                 toYear={2030}
                 initialFocus
@@ -73,5 +77,5 @@ export function DatePicker({
         </div>
       </div>
     </div>
-  )
+  );
 }
