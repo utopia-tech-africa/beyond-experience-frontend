@@ -166,7 +166,6 @@ const NavItem = ({
         />
         <p
           className="text-xs font-medium tracking-wide transition-colors duration-200"
-          style={{ color: active ? "#3B82F6" : "rgba(255,255,255,0.7)" }}
           style={{ color: active ? "#0074E5" : "rgba(255,255,255,0.7)" }}
         >
           {label}
