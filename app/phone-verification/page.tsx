@@ -4,16 +4,12 @@ import { ArrowLeft } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import Link from "next/link";
+import { useState } from "react";
 export default function PhoneVerification() {
   const [phone, setPhone] = useState("");
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center"
-      style={{
-        background: "linear-gradient(to bottom, #0d2137 0%, #000000 60%)",
-      }}
-    >
+    <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-sm px-6 text-white">
         <div className="flex items-center mb-10">
           <button>

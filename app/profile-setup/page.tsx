@@ -9,9 +9,11 @@ import PhoneInput from "react-phone-number-input/input";
 import CustomInput from "@/components/ui/custom-input";
 import CustomSelect from "@/components/ui/custom-select";
 import { DatePicker } from "@/components/custom/date-picker";
+import { useRouter } from "next/navigation";
 
 export default function ProfileSetupPage() {
   const fileRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
@@ -98,11 +100,44 @@ export default function ProfileSetupPage() {
             />
             <CustomInput label="Email" placeholder="johndoe@email.com" />
           </div>
+
+          {/* Gender */}
+          <div>
+            <label className="text-sm text-gray-300">Gender</label>
+            <select className="mt-2 w-full bg-transparent border border-gray-600 rounded-full px-5 py-3 outline-none focus:border-white">
+              <option className="bg-black">Male</option>
+              <option className="bg-black">Female</option>
+            </select>
+          </div>
+
+          {/* Date of Birth */}
+          <div>
+            <label className="text-sm text-gray-300">Date of birth</label>
+            <input
+              type="date"
+              className="mt-2 w-full bg-transparent border border-gray-600 rounded-full px-5 py-3 outline-none focus:border-white"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="text-sm text-gray-300">Email</label>
+            <input
+              type="email"
+              placeholder="johndoe@email.com"
+              className="mt-2 w-full bg-transparent border border-gray-600 rounded-full px-5 py-3 outline-none focus:border-white"
+            />
+          </div>
+
+          {/* Continue button */}
+          <button
+            onClick={() => router.push("/home-news/news")}
+            className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10"
+          >
+            Continue
+          </button>
         </form>
-        {/* Continue button */}
-        <button className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10">
-          Continue
-        </button>
+
         {/* Link to News Page */}
         <div className="w-full mb-10">
           <a

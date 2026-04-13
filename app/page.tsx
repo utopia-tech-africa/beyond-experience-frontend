@@ -1,42 +1,52 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   return (
-    <div className="h-full flex flex-col items-center overflow-hidden">
-      <div className="flex-1 flex items-end justify-center w-full pb-6">
-        <video
-          muted
-          loop
-          autoPlay
-          playsInline
-          src="/videos/hero-video.mp4"
-          className="mix-blend-screen w-full h-auto max-h-37.5 object-contain"
-        />
-      </div>
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="max-w-md w-full flex flex-col items-center justify-center gap-15 px-6">
+        <div className="flex items-center justify-center w-full">
+          {!videoLoaded && (
+            <div className="w-full h-[300px] bg-transparent animate-pulse" />
+          )}
+          <video
+            muted
+            loop
+            autoPlay
+            playsInline
+            preload="metadata"
+            onLoadedData={() => setVideoLoaded(true)}
+            src="/videos/hero-video.mp4"
+            className={`mix-blend-screen w-full h-auto max-h-37.5 object-contain ${!videoLoaded ? "hidden" : ""}`}
+          />
+        </div>
 
-      <div className="text-center text-white mt-10">
-        <h1 className="text-[32px] font-bold tracking-tight leading-none mb-4">
-          ABOVE AND BEYOND!
-        </h1>
-        <p className="text-[#9699A3] text-sm mx-auto welcome-p">
-          Welcome to your one stop hub for everything <br />
-          Beyond The Line
-        </p>
-      </div>
+        <div className="text-center text-white">
+          <h1 className="text-[32px] font-bold tracking-tight leading-none mb-4">
+            ABOVE AND BEYOND!
+          </h1>
+          <p className="text-[#9699A3] text-sm max-w-65 mx-auto">
+            Welcome to your one stop hub for everything <br />
+            Beyond The Line
+          </p>
+        </div>
 
-      <div className="w-full px-4 flex flex-col gap-4 mb-14.5 mt-20.25">
-        <Link href="/account">
-          <button className="bg-[#0E2B77] text-white py-3 px-6 rounded-full font-semibold text-base shadow-lg w-full cursor-pointer">
-            Create account
-          </button>
-        </Link>
-        <Link href="/login">
-          <button className="border border-[#676975] text-white py-3 px-6 rounded-full font-semibold text-base w-full cursor-pointer">
-            Login
-          </button>
-        </Link>
+        <div className="w-full flex flex-col gap-4">
+          <Link href="/account">
+            <button className="bg-[#112D7A] text-white py-4 rounded-full font-semibold text-base shadow-lg w-full">
+              Create account
+            </button>
+          </Link>
+          <Link href="/login">
+            <button className="border border-white text-white py-4 rounded-full font-semibold text-base w-full">
+              Login
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
