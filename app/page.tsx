@@ -27,7 +27,7 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-col gap-4">
-          <Link href="/account">
+          <Link href="/create-account">
             <button className="bg-[#0E2B77] text-white py-2.5 px-6 rounded-full font-semibold text-base shadow-lg w-full">
               Create account
             </button>
