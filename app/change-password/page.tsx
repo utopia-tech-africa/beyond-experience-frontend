@@ -39,7 +39,7 @@ export default function Page() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col h-full font-bold"
+      className="flex flex-col h-full font-bold px-4"
     >
       <TopBar title="CHANGE PASSWORD" />
       <div className="mt-6 space-y-4 text-white">
@@ -65,12 +65,14 @@ export default function Page() {
           {...register("confirmNewPassword")}
         />
       </div>
+      <div className="flex justify-end mt-auto mb-6.5">
       <button
         type="submit"
-        className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5 cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
+        className="text-white bg-[#0E2B77] w-full rounded-full  px-6 py-2.5  cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
       >
         Change password
       </button>
+      </div>
     </form>
   );
 }

@@ -37,7 +37,11 @@ export default function ForgotPasswordPhonePage() {
       <TopBar title="FORGOT PASSWORD" />
 
       <div className="mt-8 space-y-6 flex-1">
+        <p className="text-[#9CAAB8] text-sm">
+          Please enter your email to receive a verification code
+        </p>
         <div className="space-y-2">
+
           <label className="text-sm">Phone</label>
 
           <PhoneInput
@@ -78,7 +82,7 @@ export default function ForgotPasswordPhonePage() {
         <div className="text-center">
           <Link
             href="/forgotPassword"
-            className="text-sm text-blue-400 hover:underline"
+            className="text-sm text-[#417FB3] hover:underline"
           >
             Use email rather?
           </Link>
@@ -87,7 +91,7 @@ export default function ForgotPasswordPhonePage() {
 
       <button
         onClick={form.handleSubmit(onSubmit)}
-        className="w-full bg-blue-700  transition rounded-3xl py-3 font-semibold mb-6"
+        className="w-full bg-[#0E2B77]  transition rounded-3xl py-3 font-semibold mb-6"
       >
         Send
       </button>

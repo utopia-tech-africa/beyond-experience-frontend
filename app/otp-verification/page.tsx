@@ -9,6 +9,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useRouter } from "next/navigation";
+import Vector from "@/components/custom/vector";
 
 export default function VerifyOtpPage() {
   const [otp, setOtp] = useState<string>("");
@@ -20,49 +21,47 @@ export default function VerifyOtpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05080f] text-white flex items-center justify-center px-6">
-      <div className="w-full max-w-sm">
-        <div className="flex items-center mb-10">
+    <div className="text-white  px-6">
+      <div className="flex flex-col">
+        <div className="grid grid-cols-3 pb-12 pt-5  relative">
           <Link href="/" className="mr-4">
             <ArrowLeft size={26} />
           </Link>
+          <Vector />
         </div>
 
-        <h1 className="text-2xl font-bold mb-2 tracking-wide uppercase">
+        <h1 className="text-2xl font-bold mb-9.5 tracking-wide uppercase">
           Enter the code
         </h1>
-        <p className="text-gray-400 text-sm mb-6">
-          We sent a code to{" "}
-          <span className="text-white font-semibold">+233 50 433 4535</span>
-        </p>
+        <div className="">
+          <p className="text-[#F8F9FA] text-sm mb-6">
+            We sent a code to{" "}
+            <span className="text-white font-semibold">+233 50 433 4535</span>
+          </p>
 
-        <InputOTP
-          maxLength={4}
-          value={otp}
-          onChange={setOtp}
-          containerClassName="w-full"
-        >
-          <InputOTPGroup className="w-full justify-between gap-3">
-            {[0, 1, 2, 3].map((index) => (
+          <InputOTP maxLength={4}>
+            <InputOTPGroup className="space-x-[27.85px] text-white grid grid-cols-4  w-full gap-x-[27.85px]">
               <InputOTPSlot
-                key={index}
-                index={index}
-                className="
-                  flex-1 h-16 text-xl font-semibold rounded-xl
-                  bg-[#0d1117] border border-gray-700
-                  data-[active=true]:border-blue-500
-                  data-[active=true]:ring-2 data-[active=true]:ring-blue-500/30
-                  first:rounded-xl first:border
-                  last:rounded-xl last:border
-                  text-white
-                "
+                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15  w-[64.86px]"
+                index={0}
               />
-            ))}
-          </InputOTPGroup>
-        </InputOTP>
-
+              <InputOTPSlot
+                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                index={1}
+              />
+              <InputOTPSlot
+                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                index={2}
+              />
+              <InputOTPSlot
+                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                index={3}
+              />
+            </InputOTPGroup>
+          </InputOTP>
+        </div>
         <div className="text-right mt-3 mb-8">
-          <button className="text-sm text-blue-500 hover:underline">
+          <button className="text-sm text-[#417FB3] hover:underline">
             Resend code
           </button>
         </div>
@@ -70,7 +69,7 @@ export default function VerifyOtpPage() {
         <button
           onClick={handleVerify}
           disabled={otp.length < 4}
-          className="w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-3xl py-4 font-semibold text-base"
+          className="w-full bg-[#0E2B77] hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-full py-3.5 font-semibold text-base"
         >
           Verify OTP
         </button>

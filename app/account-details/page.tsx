@@ -79,40 +79,40 @@ export default function Page() {
                 {...form.register("email")}
                 errorMessage={form.formState.errors.email?.message}
               />
-              <div className="space-y-2">
-                <label className="text-white">Phone</label>
-                <PhoneInput
-                  placeholder="Enter phone number"
-                  value={form.watch("phoneNumber")}
-                  onChange={(e) => {
-                    form.setValue("phoneNumber", e as string, {
-                      shouldValidate: true,
-                    });
-                  }}
-                  numberInputProps={{
-                    className:
-                      "w-full rounded-lg px-4 py-3 text-white outline-none bg-transparent",
-                  }}
-                  containerComponentProps={{
-                    className:
-                      "rounded-full border-[#4C5C6B] border flex flex-row px-4",
-                  }}
-                  countrySelectProps={{
-                    className: "bg-[#0A253B]",
-                  }}
-                />
-                {form.formState.errors.phoneNumber && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {form.formState.errors.phoneNumber.message}
-                  </p>
-                )}
-              </div>
+
+              <label className="text-white">Phone</label>
+              <PhoneInput
+                defaultCountry="GH"
+                placeholder="Enter phone number"
+                value={form.watch("phoneNumber")}
+                onChange={(e) => {
+                  form.setValue("phoneNumber", e ?? "", {
+                    shouldValidate: true,
+                  });
+                }}
+                numberInputProps={{
+                  className:
+                    "w-full rounded-lg px-4 py-3 text-white outline-none bg-transparent",
+                }}
+                containerComponentProps={{
+                  className:
+                    "rounded-full border-[#4C5C6B] border flex flex-row px-4",
+                }}
+                countrySelectProps={{
+                  className: "bg-[#0A253B]",
+                }}
+              />
+              {form.formState.errors.phoneNumber && (
+                <p className="text-red-500 text-xs mt-1">
+                  {form.formState.errors.phoneNumber.message}
+                </p>
+              )}
             </div>
           </form>
         </div>
       </ScrollArea>
       <button
-        className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5 shrink-0"
+        className="text-white bg-[#0E2B77] w-full rounded-full py-2.5 mt-auto mb-10 shrink-0"
         form="profile-form"
       >
         Save

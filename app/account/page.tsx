@@ -8,43 +8,34 @@ import CustomInput from "@/components/ui/custom-input";
 
 export default function CreateAccountPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#071426] to-black text-white flex justify-center">
+    <div className="text-white">
       {/* Mobile container */}
-      <div className="w-full max-w-sm px-6 pt-6">
-        
+      <div className="w-full ">
         {/* Back arrow + logo */}
-        <div className="flex items-center gap-10 justify-center mb-10 relative">
-          <div className="absolute left-0">
-            <Link href="/">
-              <ArrowLeft size={30} className="cursor-pointer" />
-            </Link>
-          </div>
-          <div>
+        <div className="grid grid-cols-3 pb-12 pt-5  relative">
+          <Link href="/">
+            <ArrowLeft size={30} className="cursor-pointer" />
+          </Link>
+
+          <div className=" flex justify-center">
             <Vector />
           </div>
         </div>
 
-        <h1 className="text-3xl font-bold mb-8 tracking-wide">
-          CREATE ACCOUNT
-        </h1>
-
-        <div className="mb-5">
+        <h1 className="text-3xl font-bold tracking-wide">CREATE ACCOUNT</h1>
+        <div className="space-y-4">
           <CustomInput
             label="Email"
             type="email"
             placeholder="john@email.com"
           />
-        </div>
 
-        <div className="mb-5">
           <CustomInput
             label="Create password"
             type="password"
             placeholder="••••••••"
           />
-        </div>
 
-        <div className="mb-6">
           <CustomInput
             label="Confirm password"
             type="password"

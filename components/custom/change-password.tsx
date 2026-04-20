@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import TopBar from "./top-bar";
+import TopBar from "@/components/custom/top-bar";
 import CustomInput from "@/components/ui/custom-input";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -8,11 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const schema = z
   .object({
+    oldPassword: z.string().min(1, "Old password is required"),
     newPassword: z
       .string()
       .min(8, "Must be at least 8 characters long")
-      .regex(/[0-9]/, "Must include a number")
-      .regex(/[^a-zA-Z0-9]/, "Must include a special character"),
+      .regex(/[0-9]/, "Must include special numbers")
+      .regex(/[^a-zA-Z0-9]/, "Must include special characters"),
     confirmNewPassword: z.string(),
   })
   .refine((data) => data.newPassword === data.confirmNewPassword, {
@@ -22,7 +23,7 @@ const schema = z
 
 type FormData = z.infer<typeof schema>;
 
-export default function ChangePassword() {
+export default function Page() {
   const {
     register,
     handleSubmit,
@@ -38,10 +39,17 @@ export default function ChangePassword() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col h-full font-bold"
+      className="flex flex-col h-full font-bold px-4"
     >
       <TopBar title="CHANGE PASSWORD" />
       <div className="mt-6 space-y-4 text-white">
+        <CustomInput
+          type="password"
+          label="Old password"
+          placeholder="*********"
+          errorMessage={errors.oldPassword?.message}
+          {...register("oldPassword")}
+        />
         <CustomInput
           type="password"
           label="New password"
@@ -57,12 +65,14 @@ export default function ChangePassword() {
           {...register("confirmNewPassword")}
         />
       </div>
-      <button
-        type="submit"
-        className="text-white bg-[#0E2B77] w-full rounded-full py-3 mt-auto mb-11.5 cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
-      >
-        Change password
-      </button>
+      <div className="flex justify-end mt-auto mb-6.5">
+        <button
+          type="submit"
+          className="text-white bg-[#0E2B77] w-full rounded-full  px-6 py-2.5  cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
+        >
+          Change password
+        </button>
+      </div>
     </form>
   );
 }
