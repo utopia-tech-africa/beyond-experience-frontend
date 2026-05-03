@@ -35,17 +35,17 @@ export default function ProfileSetupPage() {
   });
 
   return (
-    <div className="h-full text-white flex justify-center pt-5 pb-16 px-6 lg:px-0">
-      <div className="w-full max-w-sm">
-        <div className="flex justify-center mb-8">
+    <div className="text-white h-full pb-16 px-6 lg:px-0 flex flex-col pt-5">
+      <div className="space-y-8">
+        <div className="flex justify-center">
           <Vector />
         </div>
 
-        <h1 className="text-center font-bold mb-8 tracking-wide">
+        <h1 className="text-center font-bold tracking-wide">
           FINISH SETTING UP YOUR ACCOUNT
         </h1>
 
-        <div className="flex justify-center mb-8 relative">
+        <div className="flex justify-center relative">
           <div className="relative">
             <Image
               src="/Profile1.jpg"
@@ -71,55 +71,53 @@ export default function ProfileSetupPage() {
             />
           </div>
         </div>
-
-        <form
-          onSubmit={form.handleSubmit(() => router.push("/home-news/news"))}
-        >
-          <div className="space-y-4">
-            <InputField
-              name="name"
-              form={form}
-              label="Name"
-              placeholder="Maxwell Attoh"
-            />
-            <InputField
-              name="username"
-              form={form}
-              label="Username"
-              placeholder="@max360"
-            />
-            <SelectField
-              name="gender"
-              form={form}
-              label="Gender"
-              placeholder="Select gender"
-            >
-              <SelectItem value="male">Male</SelectItem>
-              <SelectItem value="female">Female</SelectItem>
-            </SelectField>
-            <DatePickerField
-              name="dateOfBirth"
-              form={form}
-              label="Date of Birth"
-              placeholder="07 September, 2000"
-            />
-            <InputField
-              name="email"
-              form={form}
-              label="Email"
-              placeholder="johndoe@email.com"
-              type="email"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10"
-          >
-            Continue
-          </button>
-        </form>
       </div>
+
+      <form onSubmit={form.handleSubmit(() => router.push("/home-news/news"))}>
+        <div className="space-y-4">
+          <InputField
+            name="name"
+            form={form}
+            label="Name"
+            placeholder="Maxwell Attoh"
+          />
+          <InputField
+            name="username"
+            form={form}
+            label="Username"
+            placeholder="@max360"
+          />
+          <SelectField
+            name="gender"
+            form={form}
+            label="Gender"
+            placeholder="Select gender"
+          >
+            <SelectItem value="male">Male</SelectItem>
+            <SelectItem value="female">Female</SelectItem>
+          </SelectField>
+          <DatePickerField
+            name="dateOfBirth"
+            form={form}
+            label="Date of Birth"
+            placeholder="07 September, 2000"
+          />
+          <InputField
+            name="email"
+            form={form}
+            label="Email"
+            placeholder="johndoe@email.com"
+            type="email"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10"
+        >
+          Continue
+        </button>
+      </form>
     </div>
   );
 }

@@ -100,3 +100,22 @@ h2 {
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
 }
+
+/* react-phone-number-input */
+.PhoneInputCountrySelect {
+  background-color: #0F172A;
+  color: white;
+}
+
+.PhoneInputCountrySelect option {
+  background-color: #0F172A;
+  color: white;
+}
+
+.phone-input .PhoneInputInput {
+  background: transparent;
+  color: white;
+  outline: none;
+  flex: 1;
+  margin-left: 0.5rem;
+}
