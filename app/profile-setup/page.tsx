@@ -8,7 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import Vector from "@/components/custom/vector";
-import { DatePickerField, InputField, SelectField } from "@/components/custom/controlled-form-fields";
+import {
+  DatePickerField,
+  InputField,
+  SelectField,
+} from "@/components/custom/controlled-form-fields";
 import { SelectItem } from "@/components/ui/select";
 
 const profileSchema = z.object({
@@ -31,7 +35,7 @@ export default function ProfileSetupPage() {
   });
 
   return (
-    <div className="h-full text-white flex justify-center">
+    <div className="h-full text-white flex justify-center pt-5 pb-16 px-6 lg:px-0">
       <div className="w-full max-w-sm">
         <div className="flex justify-center mb-8">
           <Vector />
@@ -59,20 +63,53 @@ export default function ProfileSetupPage() {
               <Camera size={16} className="text-red-700" />
             </button>
 
-            <input ref={fileRef} type="file" className="hidden" accept="image/*" />
+            <input
+              ref={fileRef}
+              type="file"
+              className="hidden"
+              accept="image/*"
+            />
           </div>
         </div>
 
-        <form onSubmit={form.handleSubmit(() => router.push("/home-news/news"))}>
+        <form
+          onSubmit={form.handleSubmit(() => router.push("/home-news/news"))}
+        >
           <div className="space-y-4">
-            <InputField name="name" form={form} label="Name" placeholder="Maxwell Attoh" />
-            <InputField name="username" form={form} label="Username" placeholder="@max360" />
-            <SelectField name="gender" form={form} label="Gender" placeholder="Select gender">
+            <InputField
+              name="name"
+              form={form}
+              label="Name"
+              placeholder="Maxwell Attoh"
+            />
+            <InputField
+              name="username"
+              form={form}
+              label="Username"
+              placeholder="@max360"
+            />
+            <SelectField
+              name="gender"
+              form={form}
+              label="Gender"
+              placeholder="Select gender"
+            >
               <SelectItem value="male">Male</SelectItem>
               <SelectItem value="female">Female</SelectItem>
             </SelectField>
-            <DatePickerField name="dateOfBirth" form={form} label="Date of Birth" placeholder="07 September, 2000" />
-            <InputField name="email" form={form} label="Email" placeholder="johndoe@email.com" type="email" />
+            <DatePickerField
+              name="dateOfBirth"
+              form={form}
+              label="Date of Birth"
+              placeholder="07 September, 2000"
+            />
+            <InputField
+              name="email"
+              form={form}
+              label="Email"
+              placeholder="johndoe@email.com"
+              type="email"
+            />
           </div>
 
           <button
