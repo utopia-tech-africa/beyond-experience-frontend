@@ -2,14 +2,17 @@
 
 import { Field, FieldDescription, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { Eye, EyeOff } from "lucide-react"
+import { CalendarIcon, Eye, EyeOff } from "lucide-react"
 import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Calendar } from "@/components/ui/calendar"
 import { cn } from "@/lib/utils"
+import { format } from "date-fns"
 import {
   Controller,
   FieldError as RHFFieldError,
@@ -109,19 +112,21 @@ export const SelectField = <TFormValues extends FieldValues>({
       name={name}
       render={({ field }) => (
         <Field>
-          {label && <FieldLabel>{label}</FieldLabel>}
+          {label && <FieldLabel className="text-white font-semibold">{label}</FieldLabel>}
           <Select value={field.value ?? ""} onValueChange={field.onChange}>
             <SelectTrigger
               ref={field.ref}
               onBlur={field.onBlur}
-              className={cn("h-10 w-full bg-input", className)}
+              className={cn("rounded-full border-[#4C5C6B] w-full h-12! px-5", className)}
             >
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
-            <SelectContent>{children}</SelectContent>
+            <SelectContent position="popper" className="z-50 bg-[#0F172A] text-white cursor-pointer border border-[#4C5C6B] rounded-xl shadow-xl p-1">
+              {children}
+            </SelectContent>
           </Select>
           {description && <FieldDescription>{description}</FieldDescription>}
-          {error?.message && <FieldError>{error.message}</FieldError>}
+          {error?.message && <FieldError className="text-xs text-red-500">{error.message}</FieldError>}
         </Field>
       )}
     />
@@ -274,6 +279,81 @@ export const RadioGroupField = <TFormValues extends FieldValues>({
           </RadioGroup>
           {description && <FieldDescription>{description}</FieldDescription>}
           {error?.message && <FieldError>{error.message}</FieldError>}
+        </Field>
+      )}
+    />
+  )
+}
+
+// ── DatePickerField ───────────────────────────────────────────────────────────
+
+interface DatePickerFieldProps<TFormValues extends FieldValues> {
+  name: FieldPath<TFormValues>
+  form: UseFormReturn<TFormValues>
+  label?: string
+  description?: string
+  placeholder?: string
+  className?: string
+}
+
+export const DatePickerField = <TFormValues extends FieldValues>({
+  name,
+  form,
+  label,
+  description,
+  placeholder = "Pick a date",
+  className,
+}: DatePickerFieldProps<TFormValues>) => {
+  const { control, formState } = form
+  const error = formState.errors[name] as RHFFieldError | undefined
+  const [open, setOpen] = useState(false)
+
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <Field>
+          {label && (
+            <FieldLabel className="text-white font-semibold">{label}</FieldLabel>
+          )}
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <button
+                type="button"
+                ref={field.ref}
+                onBlur={field.onBlur}
+                className={cn(
+                  "flex items-center justify-between w-full rounded-full border border-[#4C5C6B] h-12 px-4 bg-transparent text-sm",
+                  field.value ? "text-white" : "text-gray-400",
+                  className
+                )}
+              >
+                {field.value
+                  ? format(field.value as Date, "dd MMMM, yyyy")
+                  : placeholder}
+                <CalendarIcon size={16} className="text-gray-400" />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0 bg-[#0F172A] border border-[#4C5C6B] rounded-xl text-white" align="start">
+              <Calendar
+                mode="single"
+                selected={field.value as Date | undefined}
+                onSelect={(date) => {
+                  field.onChange(date)
+                  setOpen(false)
+                }}
+                disabled={(date) => date > new Date()}
+                startMonth={new Date(1920, 0)}
+                endMonth={new Date()}
+                classNames={{
+                  weekday: "text-gray-400 rounded-md flex-1 font-normal text-[0.8rem] select-none text-center",
+                }}
+              />
+            </PopoverContent>
+          </Popover>
+          {description && <FieldDescription>{description}</FieldDescription>}
+          {error?.message && <FieldError className="text-xs text-red-500">{error.message}</FieldError>}
         </Field>
       )}
     />
