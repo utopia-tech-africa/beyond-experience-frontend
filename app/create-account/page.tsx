@@ -4,42 +4,77 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Vector from "@/components/custom/vector";
-import CustomInput from "@/components/ui/custom-input";
+import { InputField } from "@/components/custom/controlled-form-fields";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z
+  .object({
+    email: z.string().email("Enter a valid email"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+type FormValues = z.infer<typeof schema>;
+
+const onSubmit = (data: FormValues) => {
+  console.log(data);
+  
+};
 
 export default function CreateAccountPage() {
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema),
+    defaultValues: { email: "", password: "", confirmPassword: "" },
+  });
+
   return (
-    <div className="text-white  h-full pb-16.5 px-2 lg:px-0 flex flex-col">
-      <div className="grid grid-cols-3 pb-12 pt-5  relative">
+    <div className="text-white h-full pb-16 px-6 lg:px-0 flex flex-col">
+      <div className="grid grid-cols-3 pb-12 pt-5 relative">
         <Link href="/">
           <ArrowLeft size={30} className="cursor-pointer" />
         </Link>
 
-        <div className=" flex justify-center">
+        <div className="flex justify-center">
           <Vector />
         </div>
       </div>
       <div className="w-full flex flex-col justify-evenly flex-1">
         <h1 className="text-3xl font-bold tracking-wide">CREATE ACCOUNT</h1>
-        <div className="space-y-4">
-          <CustomInput
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <InputField
+            name="email"
+            form={form}
             label="Email"
             type="email"
             placeholder="john@email.com"
           />
-          <CustomInput
+          <InputField
+            name="password"
+            form={form}
             label="Create password"
             type="password"
             placeholder="••••••••"
           />
-          <CustomInput
+          <InputField
+            name="confirmPassword"
+            form={form}
             label="Confirm password"
             type="password"
             placeholder="••••••••"
           />
-          <button className="bg-[#0E2B77] text-white py-2.5 px-6 rounded-full font-semibold text-base shadow-lg w-full">
+          <button
+            type="submit"
+            className="bg-[#0E2B77] text-white py-3 rounded-3xl font-semibold text-base w-full"
+          >
             Create account
           </button>
-        </div>
+        </form>
         <div className="space-y-4">
           {/* <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-gray-700" />
