@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
 import TopBar from "@/components/custom/top-bar";
-import CustomInput from "@/components/ui/custom-input";
+import { InputField } from "@/components/custom/controlled-form-fields";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,11 +23,7 @@ const schema = z
 type FormData = z.infer<typeof schema>;
 
 export default function Page() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
+  const form = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
@@ -38,40 +33,40 @@ export default function Page() {
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col h-full font-bold px-4"
+      onSubmit={form.handleSubmit(onSubmit)}
+      className="flex flex-col h-full font-bold px-4 pt-5"
     >
       <TopBar title="CHANGE PASSWORD" />
       <div className="mt-6 space-y-4 text-white">
-        <CustomInput
+        <InputField
+          name="oldPassword"
+          form={form}
           type="password"
           label="Old password"
           placeholder="*********"
-          errorMessage={errors.oldPassword?.message}
-          {...register("oldPassword")}
         />
-        <CustomInput
+        <InputField
+          name="newPassword"
+          form={form}
           type="password"
           label="New password"
           placeholder="*********"
-          errorMessage={errors.newPassword?.message}
-          {...register("newPassword")}
         />
-        <CustomInput
+        <InputField
+          name="confirmNewPassword"
+          form={form}
           type="password"
           label="Confirm new password"
           placeholder="*********"
-          errorMessage={errors.confirmNewPassword?.message}
-          {...register("confirmNewPassword")}
         />
       </div>
       <div className="flex justify-end mt-auto mb-6.5">
-      <button
-        type="submit"
-        className="text-white bg-[#0E2B77] w-full rounded-full  px-6 py-2.5  cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
-      >
-        Change password
-      </button>
+        <button
+          type="submit"
+          className="text-white bg-[#0E2B77] w-full rounded-full px-6 py-2.5 cursor-pointer hover:bg-[#0A1F5B] transition-colors duration-300"
+        >
+          Change password
+        </button>
       </div>
     </form>
   );

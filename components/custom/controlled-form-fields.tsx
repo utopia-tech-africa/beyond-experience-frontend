@@ -63,6 +63,7 @@ export const InputField = <TFormValues extends FieldValues>({
               placeholder={placeholder}
               className={cn("rounded-full border-[#4C5C6B] h-12 px-4 placeholder:text-gray-400", className)}
               {...field}
+              value={field.value ?? ""}
             />
             {type === "password" && (
               <button
