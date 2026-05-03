@@ -13,9 +13,9 @@ export default function PhoneVerification() {
   const router = useRouter();
 
   const handleSendOtp = () => {
-    // Implement OTP sending logic here, e.g., call an API to send the OTP to the provided phone number
+    sessionStorage.setItem("phoneNumber", phone);
     console.log("Sending OTP to:", phone);
-    router.push("/otp-verification"); // Navigate to OTP verification page after sending OTP
+    router.push("/otp-verification");
   };
 
   return (

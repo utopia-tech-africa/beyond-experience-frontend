@@ -32,8 +32,8 @@ export default function CreateAccountPage() {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    //route to profile-setup page
-    router.push("/profile-setup");
+    //route to phone-verification page
+    router.push("/phone-verification");
   };
 
   return (

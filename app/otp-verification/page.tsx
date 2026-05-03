@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import {
@@ -13,6 +13,11 @@ import Vector from "@/components/custom/vector";
 
 export default function VerifyOtpPage() {
   const [otp, setOtp] = useState<string>("");
+  const phoneNumber = useSyncExternalStore(
+    () => () => {},
+    () => sessionStorage.getItem("phoneNumber") ?? "",
+    () => "",
+  );
   const router = useRouter();
 
   const handleVerify = () => {
@@ -21,13 +26,16 @@ export default function VerifyOtpPage() {
   };
 
   return (
-    <div className="text-white  px-6">
+    <div className="text-white px-6 lg:px-0">
       <div className="flex flex-col">
-        <div className="grid grid-cols-3 pb-12 pt-5  relative">
-          <Link href="/" className="mr-4">
-            <ArrowLeft size={26} />
-          </Link>
-          <Vector />
+        <div className="grid grid-cols-3 pb-12 pt-5 relative">
+          <button onClick={() => router.back()}>
+            <ArrowLeft size={30} className="cursor-pointer" />
+          </button>
+
+          <div className="flex justify-center">
+            <Vector />
+          </div>
         </div>
 
         <h1 className="text-2xl font-bold mb-9.5 tracking-wide uppercase">
@@ -36,25 +44,25 @@ export default function VerifyOtpPage() {
         <div className="">
           <p className="text-[#F8F9FA] text-sm mb-6">
             We sent a code to{" "}
-            <span className="text-white font-semibold">+233 50 433 4535</span>
+            <span className="text-white font-semibold">{phoneNumber}</span>
           </p>
 
-          <InputOTP maxLength={4}>
-            <InputOTPGroup className="space-x-[27.85px] text-white grid grid-cols-4  w-full gap-x-[27.85px]">
+          <InputOTP maxLength={4} value={otp} onChange={setOtp}>
+            <InputOTPGroup className="flex w-full gap-6.75 text-white">
               <InputOTPSlot
-                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15  w-[64.86px]"
+                className="rounded-md border border-[#4C5C6B] font-semibold shadow-none h-15 flex-1 min-w-0"
                 index={0}
               />
               <InputOTPSlot
-                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                className="rounded-md border border-[#4C5C6B] font-semibold shadow-none h-15 flex-1 min-w-0"
                 index={1}
               />
               <InputOTPSlot
-                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                className="rounded-md border border-[#4C5C6B] font-semibold shadow-none h-15 flex-1 min-w-0"
                 index={2}
               />
               <InputOTPSlot
-                className="rounded-md border-accent border border-[#4C5C6B] font-semibold shadow-none h-15 w-[64.86px] "
+                className="rounded-md border border-[#4C5C6B] font-semibold shadow-none h-15 flex-1 min-w-0"
                 index={3}
               />
             </InputOTPGroup>
