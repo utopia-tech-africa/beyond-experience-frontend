@@ -8,6 +8,7 @@ import { InputField } from "@/components/custom/controlled-form-fields";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 const schema = z
   .object({
@@ -22,16 +23,18 @@ const schema = z
 
 type FormValues = z.infer<typeof schema>;
 
-const onSubmit = (data: FormValues) => {
-  console.log(data);
-  
-};
-
 export default function CreateAccountPage() {
+  const router = useRouter();
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: { email: "", password: "", confirmPassword: "" },
   });
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+    //route to profile-setup page
+    router.push("/profile-setup");
+  };
 
   return (
     <div className="text-white h-full pb-16 px-6 lg:px-0 flex flex-col">
