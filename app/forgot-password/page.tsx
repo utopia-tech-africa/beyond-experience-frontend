@@ -1,58 +1,86 @@
 "use client";
 
 import TopBar from "@/components/custom/top-bar";
-import CustomInput from "@/components/ui/custom-input";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-const schema = z.object({
-  email: z
-    .string()
-    .min(1, "Email is required")
-    .email("Enter a valid email address"),
-});
-
-type FormData = z.infer<typeof schema>;
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { useRouter } from "next/navigation";
 
 export default function ForgotPasswordPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
+  const [usePhone, setUsePhone] = useState(false);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  const onSubmit = (data: FormData) => {
-    console.log("Reset email:", data.email);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (usePhone && !phone) {
+      setError("Phone number is required");
+      return;
+    }
+    if (!usePhone && !email) {
+      setError("Email is required");
+      return;
+    }
+    setError("");
+    sessionStorage.setItem("forgotContact", usePhone ? phone : email);
+    router.push("/forgot-password-otp");
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit}
       className="space-y-8 flex flex-col h-full px-4"
     >
       <TopBar title="FORGOT PASSWORD" />
       <p className="text-[#9CAAB8] text-sm">
-        Please enter your email to receive a verification code
+        {usePhone
+          ? "Please enter your phone number to receive a verification code"
+          : "Please enter your email to receive a verification code"}
       </p>
       <div className="space-y-3">
-        <CustomInput
-          label="Email"
-          placeholder="johndoe@email.com"
-          type="email"
-          errorMessage={errors.email?.message}
-          {...register("email")}
-        />
+        {usePhone ? (
+          <Field>
+            <FieldLabel className="text-white font-semibold">Phone</FieldLabel>
+            <PhoneInput
+              defaultCountry="GH"
+              value={phone}
+              onChange={(val) => setPhone(val as string)}
+              className="phone-input flex items-center rounded-full border border-[#4C5C6B] h-12 px-4 bg-transparent"
+            />
+            {error && (
+              <FieldError className="text-xs text-red-500">{error}</FieldError>
+            )}
+          </Field>
+        ) : (
+          <Field>
+            <FieldLabel className="text-white font-semibold">Email</FieldLabel>
+            <Input
+              type="email"
+              placeholder="johndoe@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="rounded-full border-[#4C5C6B] h-12 px-4 placeholder:text-gray-400"
+            />
+            {error && (
+              <FieldError className="text-xs text-red-500">{error}</FieldError>
+            )}
+          </Field>
+        )}
         <div className="text-center">
-          <Link
-            href="/changePassword"
+          <button
+            type="button"
+            onClick={() => {
+              setUsePhone((v) => !v);
+              setError("");
+            }}
             className="text-sm text-[#417FB3] hover:underline"
           >
-            Use phone rather?
-          </Link>
+            {usePhone ? "Use email rather?" : "Use phone rather?"}
+          </button>
         </div>
       </div>
 
