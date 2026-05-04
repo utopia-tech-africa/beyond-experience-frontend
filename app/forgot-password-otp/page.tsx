@@ -17,7 +17,7 @@ const Page = () => {
   );
 
   return (
-    <div className="space-y-6 px-4 flex flex-col h-full">
+    <div className="space-y-6 px-4 flex flex-col h-full pt-5">
       <TopBar title="FORGOT PASSWORD" />
       <p className="text-white text-sm">
         We sent a code to <span className="font-semibold">{contact}</span>
