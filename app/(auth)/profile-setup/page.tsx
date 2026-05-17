@@ -113,7 +113,7 @@ export default function ProfileSetupPage() {
 
         <button
           type="submit"
-          className="w-full bg-blue-700 hover:bg-blue-800 transition rounded-full py-3 font-semibold mt-4 mb-10"
+          className="w-full bg-[#0E2B77] hover:bg-[#0C2563] transition rounded-full py-3 font-semibold mt-4"
         >
           Continue
         </button>

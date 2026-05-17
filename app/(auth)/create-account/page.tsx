@@ -37,7 +37,7 @@ export default function CreateAccountPage() {
   };
 
   return (
-    <div className="text-white h-full pb-16 px-6 lg:px-0 flex flex-col">
+    <div className="text-white h-full pb-16 px-6 lg:px-0 flex flex-col ">
       <div className="grid grid-cols-3 pb-12 pt-5 relative">
         <Link href="/">
           <ArrowLeft size={30} className="cursor-pointer" />

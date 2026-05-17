@@ -44,7 +44,7 @@ export default function PhoneVerification() {
       {/* Send code button */}
       <button
         onClick={handleSendOtp}
-        className="w-full bg-blue-600 hover:bg-blue-700 transition rounded-full py-3 font-semibold inline-block text-center"
+        className="w-full bg-[#0E2B77] hover:bg-[#0C2563] transition rounded-full py-3 font-semibold inline-block text-center"
       >
         Send code
       </button>

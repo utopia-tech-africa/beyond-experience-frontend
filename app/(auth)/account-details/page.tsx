@@ -11,8 +11,8 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 
 const profileSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters long"),
-  username: z.string().min(2, "Username must be at least 2 characters long"),
+  name: z.string().min(4, "Name must be at least 4 characters long"),
+  username: z.string().min(5, "Username must be at least 5 characters long"),
   email: z.string().email("Enter a valid email address"),
   gender: z.enum(["male", "female"], {
     error: "Please select a gender",

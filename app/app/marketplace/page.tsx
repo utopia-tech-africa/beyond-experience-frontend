@@ -2,7 +2,6 @@ import MarketplaceCard from "@/components/custom/marketplace-card";
 import NavBar from "@/components/custom/nav-bar";
 import { SearchBar } from "@/components/custom/search-bar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import React from "react";
 
 const LISTINGS = [
   {
@@ -49,10 +48,10 @@ const LISTINGS = [
 
 const Page = () => {
   return (
-    <div className="h-full space-y-5 py-2  px-6">
+    <div className="flex flex-col h-screen space-y-5 py-2 px-6">
       <NavBar title="DWAM" />
       <SearchBar />
-      <ScrollArea className="h-[calc(100vh-180px)] rounded-md">
+      <ScrollArea className="flex-1 min-h-0 rounded-md">
         <div className="space-y-3">
           {LISTINGS.map((item) => (
             <MarketplaceCard
